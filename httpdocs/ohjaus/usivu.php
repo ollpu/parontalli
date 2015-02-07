@@ -1,5 +1,6 @@
 <!--Kotisivut Riika/Hevoset, draft 1; /ohjaus/usivu.php-->
 <?
+$rel = "../";
 
 session_start();
 include "passphrase.php";
@@ -11,36 +12,21 @@ $logged = $pwd == $key;
 <html>
 <head>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<?php include $rel."skeleton/metas.php" ?>
 
-  ga('create', 'UA-51951207-1', 'auto');
-  ga('require', 'displayfeatures');
-  ga('send', 'pageview');
-
-</script>
-
-<meta charset="UTF-8">
 <title>
 	Uusi sivu - Ohjaus
 </title>
 
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" class="text/css" href="../main.css">
+	<link rel="stylesheet" class="text/css" href="<? print($rel); ?>main.css">
 
 </head>
 
 <body>
-<div class="bg1"></div>
-<div class="bg2"></div>
-<br/>
-<div class="header">
-	<h1>Parontalli</h1><br/>
-</div>
+
+<?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
 	<a class="sininen" href="../" id="">
@@ -84,6 +70,6 @@ Uusi sivu
 	?>
 	
 </div>
-
+<?php include $rel."skeleton/footer.php" ?>
 </body>
 <html>

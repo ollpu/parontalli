@@ -1,7 +1,10 @@
 <!--Kotisivut Riikka/Hevoset, draft 1; /index.php-->
 <?
 
-include "./db.php";
+
+$rel = "./";
+
+include $rel."db.php";
 
 
 $haku_fp = mysqli_query($yht, "SELECT * FROM `sivut` LIMIT 1");
@@ -27,21 +30,8 @@ $uid = $pagerow["uid"];
 <html>
 <head>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<?php include $rel."skeleton/metas.php" ?>
 
-  ga('create', 'UA-51951207-1', 'auto');
-  ga('require', 'displayfeatures');
-  ga('send', 'pageview');
-
-</script>
-
-<meta charset="UTF-8">
-<meta name="msvalidate.01" content="0FB9B019DA55297EDC00A30165EA3E85" />
-<meta name=viewport content="width=device-width, initial-scale=1">
 
 <?
 echo '<meta name="description" content="'. $selitys .'">';
@@ -52,7 +42,7 @@ echo '<meta name="description" content="'. $selitys .'">';
 
 	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" class="text/css" href="main.css">
+	<link rel="stylesheet" class="text/css" href="<? print($rel); ?>main.css">
 
 </head>
 
@@ -68,12 +58,8 @@ function runHandles()
 </script>
 
 <body onresize="execRnav();" onscroll="execRnav();" onload="runHandles();">
-<div class="bg1"></div>
-<div class="bg2"></div>
-<br/>
-<div class="header">
-	<h1>Parontalli</h1><br/>
-</div>
+
+<?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
 	<?
@@ -94,11 +80,13 @@ function runHandles()
 </div>
 <?
 if (!$kuva == ""){
-echo '
-<img src="'. $kuva .'" class="header">
-';
+	echo '
+	<img src="'. $kuva .'" class="header">
+	';
 }
+
 echo $html;
+
 ?>
 <div class="content"><br>
 	<?
@@ -106,10 +94,6 @@ echo $html;
 	echo $teksti;
 	?>
 </div>
-<br><br><br><br><br><br><br><br>
-<div class="footer">
-<hr>
-<a href="./ohjaus">Hallinta</a> - Sivuston rakenteen tehnyt: <a href="mailto:rpsalmi@gmail.com">Roope Salmi</a> - <a href="https://github.com/ollpu/parontalli">Lähdekoodi</a>
-</div>
+<?php include $rel."skeleton/footer.php" ?>
 </body>
 <html>
