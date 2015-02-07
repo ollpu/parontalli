@@ -1,0 +1,66 @@
+<!--Kotisivut Riikka/Hevoset, draft 1; error:404-->
+
+<html>
+<head>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51951207-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+
+<meta charset="UTF-8">
+<meta name="msvalidate.01" content="0FB9B019DA55297EDC00A30165EA3E85" />
+
+
+<title>
+	404: Sivua ei löydetty
+</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" class="text/css" href="http://parontalli.fi/main.css">
+
+</head>
+
+
+
+<body>
+<div class="bg1"></div>
+<div class="bg2"></div>
+<br/>
+<div class="header">
+	<h1>Parontalli</h1><br/>
+</div>
+
+<div class="nav">
+	
+		<a class="punainen" href="http://parontalli.fi/" id="">
+		&nbsp;Etusivulle&nbsp;
+		</a>
+		&nbsp;&nbsp;
+		
+		<a class="sininen" href="./" id="thispage">
+		&nbsp;404&nbsp;
+		</a>
+		&nbsp;&nbsp;
+	<hr class="header" id="">
+</div>
+
+<div class="content"><br>
+	<h2>404: Sivua ei löytynyt</h2>
+	<br>Valitettavasti etsimäänne sivua ei löydetty palvelimelta parontalli.fi.
+</div>
+<br><br><br><br><br><br><br><br>
+<div class="footer">
+<hr>
+<a href="./ohjaus">Hallinta</a> - Sivuston rakenteen tehnyt: <a href="mailto:rpsalmi@gmail.com">Roope Salmi</a>
+</div>
+</body>
+<html>
