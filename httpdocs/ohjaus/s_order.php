@@ -17,7 +17,7 @@ if ($logged == true){
 			$query = "UPDATE sivut SET id = '".$_POST[$row['id']]."' WHERE id = ". $row['id'];
 			mysqli_query($yht, $query); 
 		}
-		header( 'Location: http://www.parontalli.fi/ohjaus/paneeli.php?msg=order' );
-	}else{header( 'Location: http://www.parontalli.fi/ohjaus/paneeli.php?msg=orderdupl' );}
+		header( 'Location: ./paneeli.php?msg=order' );
+	}else{header( 'Location: ./paneeli.php?msg=orderdupl' );}
 }else{echo "Et ole kirjautunut si&auml;&auml;n. <a href='./'>Yrit&auml; uudellen t&auml;st&auml;.</a>";}
 ?>

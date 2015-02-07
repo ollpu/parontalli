@@ -29,8 +29,8 @@ if ($logged == true){
 		
 		$query = "INSERT INTO sivut (nimi, teksti, kuva, color, selitys, uid) VALUES ('". parse($_POST["nimi"], $yht) ."', '". parse($_POST["teksti"], $yht) ."', '". parse($_POST["kuva"], $yht) ."', '". parse($_POST["vari"], $yht) ."', '". parse($_POST["selitys"], $yht) ."', '". create_uid($yht) ."')";
 		mysqli_query($yht, $query);
-		header( 'Location: http://www.parontalli.fi/ohjaus/paneeli.php?msg=created' );
-	} else {header( 'Location: http://www.parontalli.fi/ohjaus/paneeli.php?msg=exsisting' );;}
+		header( 'Location: ./paneeli.php?msg=created' );
+	} else {header( 'Location: ./paneeli.php?msg=exsisting' );;}
 }else{echo "Et ole kirjautunut si&auml;&auml;n. <a href='./'>Yrit&auml; uudellen t&auml;st&auml;.</a>";}
 
 

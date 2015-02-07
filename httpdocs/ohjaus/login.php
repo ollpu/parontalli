@@ -11,6 +11,6 @@
 <html>
 	<head>
 		<title>Kirjaudutaan sisään...</title>
-		<meta http-equiv="refresh" content="0; url=http://www.parontalli.fi/ohjaus/paneeli.php?msg=login" />
+		<meta http-equiv="refresh" content="0; url=./paneeli.php?msg=login" />
 	</head>
 </html>

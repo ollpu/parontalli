@@ -15,6 +15,6 @@ $logged = $pwd == $key;
 		$query = "DELETE FROM sivut WHERE id = ". $_GET['id'];
 		mysqli_query($yht, $query); 
 		echo($query);
-		header( 'Location: http://www.parontalli.fi/ohjaus/paneeli.php?msg=deleted' );
+		header( 'Location: ../paneeli.php?msg=deleted' );
 	}else{echo "Et ole kirjautunut si&auml;&auml;n. <a href='./'>Yrit&auml; uudellen t&auml;st&auml;.</a>";}
 ?>

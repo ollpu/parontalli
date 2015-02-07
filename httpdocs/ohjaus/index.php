@@ -8,7 +8,7 @@ include "passphrase.php";
 
 $pwd = $_SESSION["pwd"];
 	if ($pwd == $key){
-		header( 'Location: http://www.parontalli.fi/ohjaus/paneeli.php' );
+		header( 'Location: ./paneeli.php' );
 	}
 ?>
 <html>
