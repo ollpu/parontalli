@@ -5,3 +5,4 @@ A horse-stall website for my aunt and grandfather.
  - hosted on: [Planeetta Internet](http://www.planeetta.net/)
  - programmed with: PHP (sorry people)
  - database: mySQL
+ - site language: finnish (partly programmed in english)
