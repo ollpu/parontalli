@@ -1,21 +1,12 @@
 <!--Kotisivut Riikka/Hevoset, draft 1; /piensivu/saga_kuvat.php-->
 
+<?php $rel = "../"; ?>
+
+
 <html>
 <head>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-51951207-1', 'parontalli.fi');
-  ga('require', 'displayfeatures');
-  ga('send', 'pageview');
-</script>
-
-<meta charset="UTF-8">
-<meta name="msvalidate.01" content="0FB9B019DA55297EDC00A30165EA3E85" />
+<?php include $rel."skeleton/metas.php" ?>
 
 <title>
 	Kuvia: Saga
@@ -29,12 +20,7 @@
 
 
 <body>
-<div class="bg1"></div>
-<div class="bg2"></div>
-<br/>
-<div class="header">
-	<h1>Parontalli</h1><br/>
-</div>
+<?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
 		<a class="punainen" href="../?s=5db6#otsikko1" id="">
@@ -61,5 +47,6 @@
 <hr>
 <a href="./ohjaus">Hallinta</a> - Sivun rakenteen tehnyt: <a href="mailto:rpsalmi@gmail.com">Roope Salmi</a>
 </div>
+<?php include $rel."skeleton/footer.php" ?>
 </body>
 <html>

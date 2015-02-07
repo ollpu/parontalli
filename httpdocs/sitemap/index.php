@@ -1,9 +1,7 @@
 <?php
-$yht = mysqli_connect("mysql.3owl.com","u310277879_ojala","Paalihevoset01","u310277879_ojala");
-if (mysqli_connect_errno()) {
-	echo "Virhe tapahtui yhdistett&auml;ess&auml; tietokantaan: " . mysqli_connect_error() . "<br>Ota yhteys järjestelmänvalvojaan.";
-	end();
-}
+$rel = "../";
+
+include $rel."db.php";
 
 header('Content-type: text/xml');
 header('Pragma: public');
