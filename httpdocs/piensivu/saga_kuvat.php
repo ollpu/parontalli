@@ -42,11 +42,6 @@
 	<div class="img3"><img class="content" src="http://s25.postimg.org/nzkvfuhzj/Maastoeste_R1_I2.jpg"> <img class="content" src="http://s25.postimg.org/vea7883v3/Maastoeste_R2_I1.jpg"> <img class="content" src="http://s25.postimg.org/nk9lmtw27/Maastoeste_R2_I2.jpg"></div><br>
 	<div class="img3"><img class="content" src="http://s25.postimg.org/4lk1g5qj3/Maastoeste_R3_I1.jpg"> <img class="content" src="http://s25.postimg.org/mykmqq0zz/Maastoeste_R3_I2.jpg"> <img class="content" src="http://s25.postimg.org/mabs7s2a7/Maastoeste_R3_I3.jpg"></div><br>
 </div>
-<br><br><br><br><br><br><br><br>
-<div class="footer">
-<hr>
-<a href="./ohjaus">Hallinta</a> - Sivun rakenteen tehnyt: <a href="mailto:rpsalmi@gmail.com">Roope Salmi</a>
-</div>
 <?php include $rel."skeleton/footer.php" ?>
 </body>
 <html>

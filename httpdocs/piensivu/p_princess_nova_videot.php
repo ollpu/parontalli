@@ -43,11 +43,6 @@
 	<h2>Laukka</h2><br>
 	<iframe class="video" src='http://www.youtube.com/embed/_bs6TrBe8ss' allowfullscreen></iframe><iframe class="video" src='http://www.youtube.com/embed/uvDiutvw-Dg' allowfullscreen></iframe><br>
 </div>
-<br><br><br><br><br><br><br><br>
-<div class="footer">
-<hr>
-<a href="./ohjaus">Hallinta</a> - Sivun rakenteen tehnyt: <a href="mailto:rpsalmi@gmail.com">Roope Salmi</a>
-</div>
 <?php include $rel."skeleton/footer.php" ?>
 </body>
 <html>
