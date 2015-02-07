@@ -6,3 +6,5 @@ A horse-stall website for my aunt and grandfather.
  - programmed with: PHP (sorry people)
  - database: mySQL
  - site language: finnish (partly programmed in english)
+
+dev branch manually mirrored to [/dev/](http://www.parontalli.fi/dev/).
