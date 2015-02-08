@@ -27,7 +27,7 @@ include "passphrase.php";
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-	<a class="sininen" href="../" id="">
+	<a class="sininen" href="./paneeli.php" id="">
 		&nbsp;Takaisin&nbsp;
 	</a>
 	&nbsp;&nbsp;
@@ -64,7 +64,7 @@ Uusi sivu
 		<input type="submit" value="Luo">
 		</form> 
 		';
-		}else echo "Et ole kitjautunut si&auml;&auml;n. <a href='./'>Yrit&auml; uudellen t&auml;st&auml;.</a>";
+		}else echo "Et ole kitjautunut sisään. <a href='./'>Yritä uudellen tästä.</a>";
 	?>
 	
 </div>
