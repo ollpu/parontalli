@@ -221,6 +221,11 @@ text-decoration: none;
 padding: 4px;
 
 }
+
+div.paneeli.mini>a.pane {
+height: 4em;
+}
+
 a.pane:hover{
 transform:rotateX(20deg);
 -webkit-transform:rotateX(20deg);
