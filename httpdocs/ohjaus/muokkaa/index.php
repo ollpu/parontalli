@@ -48,7 +48,7 @@ Muokkaa sivua
 	
 	<?
 		if ($logged == true){
-		$haku_ep = mysqli_query($yht, "SELECT * FROM sivut WHERE id = '". $_GET['esivu'] ."'");
+		$haku_ep = mysqli_query($yht, "SELECT * FROM sivut WHERE uid = '". $_GET['es'] ."'");
 		$eprow = mysqli_fetch_assoc($haku_ep);
 		
 		if ($eprow['color'] == "punainen"){$punainen = "selected";}
@@ -62,7 +62,7 @@ Muokkaa sivua
 		<form name="esivu" action="tallenna.php" method="post">
 		Sivun nimi: <input type="text" name="nimi" value="'. $eprow['nimi'] .'"><br>
 		Kuva (URL): <input type="text" name="kuva" value="'. $eprow['kuva'] .'"><br>
-		V&auml;ri: <select name="vari">
+		Väri: <select name="vari">
 					<option value="sininen" '. 		$sininen .'>Sininen</option>
 					<option value="punainen" '. 	$punainen .'>Punainen</option>
 					<option value="vihrea" '. 		$vihrea .'>Vihre&auml;</option>
@@ -73,14 +73,14 @@ Muokkaa sivua
 		Teksti:<br><textarea name="teksti" rows="10" cols="30">'. $eprow['teksti'] .'</textarea>
 		<br>
 		Selitys: (hakukoneille)<br><textarea name="selitys" rows="4" cols="20">'. $eprow['selitys'] .'</textarea> 
-		<input type="hidden" name="id" value="'. $eprow['id'] .'">
+		<input type="hidden" name="uid" value="'. $eprow['uid'] .'">
 		<br>
 		HTML: (Roope t&auml;ytt&auml;&auml;)<br><textarea name="html" rows="1" cols="10">'. $eprow['html'] .'</textarea>
 		<br>
 		<input type="submit" value="Tallenna">
 		</form>
 		<h2>tai</h2>
-		<input type="button" value="Poista sivu" onClick="if(confirm(\'Haluatko varmasti poistaa koko sivun? T&auml;t&auml; ei voi peruuttaa!\'))window.location.href = \'poista.php?id='. $eprow['id'] .'\'">
+		<input type="button" value="Poista sivu" onClick="if(confirm(\'Haluatko varmasti poistaa koko sivun? Tätä ei voi peruuttaa!\'))window.location.href = \'poista.php?uid='. $eprow['uid'] .'\'">
 		';
 		}else echo "Et ole kirjautunut sis&auml;&auml;n. <a href='../'>Yrit&auml; uudellen t&auml;st&auml;.</a>";
 	?>

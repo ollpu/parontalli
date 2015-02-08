@@ -67,7 +67,7 @@ Tervetuloa!
 			$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");
 			while ($row = mysqli_fetch_array($haku)){
 				echo '
-				<a class="pane sininen" href="./muokkaa?esivu='. $row['id'] .'">
+				<a class="pane sininen" href="./muokkaa?es='. $row['uid'] .'">
 				<span class="inpane">Muokkaa sivua<br>' . $row['nimi'] . '</span>
 				</a>';
 			}

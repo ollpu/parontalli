@@ -11,7 +11,7 @@ include "../passphrase.php";
 		
 		include "../../db.php";
 
-		$query = "DELETE FROM sivut WHERE id = ". $_GET['id'];
+		$query = "DELETE FROM sivut WHERE uid = '". $_GET['uid']."'";
 		mysqli_query($yht, $query); 
 		echo($query);
 		header( 'Location: ../paneeli.php?msg=deleted' );

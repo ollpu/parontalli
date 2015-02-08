@@ -33,7 +33,7 @@ if(!$logged) {
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-	<a class="punainen" href="./paneeli.php" id="">
+	<a class="punainen" href="../paneeli.php" id="">
 		&nbsp;Peruuta&nbsp;
 	</a>
 	&nbsp;&nbsp;
