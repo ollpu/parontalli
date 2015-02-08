@@ -79,6 +79,10 @@ Tervetuloa!
 			<a class="pane vihrea" href="./usivu.php">
 			<span class="inpane">Luo uusi sivu</span>
 			</a>';
+			echo '
+			<a class="pane punainen" href="./tietokanta/">
+			<span class="inpane">Muokkaa eläintietokantaa</span>
+			</a>';
 			echo '</div>';
 		}else echo "Väärä sala-avain. <a href='./'>Yritä uudellen tästä.</a>";
 	?>

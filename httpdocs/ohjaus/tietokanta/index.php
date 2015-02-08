@@ -60,7 +60,7 @@ if($logged) {
 		echo('
 		<a class="pane vihrea">
 		<span class="inpane">
-		Katsele tietoja kohteesta '.$row['id_name'].'
+		Katsele kohdetta '.$row['id_name'].'
 		</span>
 		</a>
 		');
