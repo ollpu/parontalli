@@ -4,7 +4,7 @@
 <div class="header">
 	<h1>Parontalli</h1>
 	<? 
-		if(strpos($_SERVER[REQUEST_URI], '/dev/') == 0) {
+		if(substr($_SERVER[REQUEST_URI], 0, 4) == '/dev') {
 			echo("Olet /dev/ sivuilla. 
 Näillä sivuilla kokeillaan kehitystyön alla olevia toimintoja, joten jotkin toiminnot voivat olla epävakaita.");
 		} 
