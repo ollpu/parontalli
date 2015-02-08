@@ -11,12 +11,14 @@ $haku_fp = mysqli_query($yht, "SELECT * FROM `sivut` LIMIT 1");
 $fprow = mysqli_fetch_assoc($haku_fp);
 
 
+//Go to first page in order (front page)
+if(!isset($_GET["s"]))	{$_GET['s'] = $fprow['uid'];}
 
-if(!isset($_GET["sivu"]) && !isset($_GET["s"]))	{$_GET['s'] = $fprow['uid'];}
-if(isset($_GET["sivu"]))	{$haku_s = mysqli_query($yht, "SELECT * FROM `sivut` WHERE id = '". $_GET['sivu'] . "'");} else {
-	$haku_s = mysqli_query($yht, "SELECT * FROM `sivut` WHERE uid = '". $_GET['s'] . "'");
-}
-	$pagerow = mysqli_fetch_assoc($haku_s);
+
+$haku_s = mysqli_query($yht, "SELECT * FROM `sivut` WHERE uid = '". $_GET['s'] . "'");
+
+
+$pagerow = mysqli_fetch_assoc($haku_s);
 
 
 $kuva = $pagerow["kuva"];
