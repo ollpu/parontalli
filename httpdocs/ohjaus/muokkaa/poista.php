@@ -1,14 +1,13 @@
 <!--Kotisivut Riika/Hevoset, draft 1; /ohjaus/muokkaa/poista.php-->
 <?php
 
-session_start();
+
 include "../passphrase.php";
-$pwd = $_SESSION["pwd"];
-
-$logged = $pwd == $key;
 
 
-	if ($logged == true){
+
+
+	if ($logged){
 		
 		include "../../db.php";
 

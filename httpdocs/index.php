@@ -11,7 +11,7 @@ $haku_fp = mysqli_query($yht, "SELECT * FROM `sivut` LIMIT 1");
 $fprow = mysqli_fetch_assoc($haku_fp);
 
 
-//Go to first page in order (front page)
+//Go to first page in order (front page) if ?s argument is not set
 if(!isset($_GET["s"]))	{$_GET['s'] = $fprow['uid'];}
 
 
@@ -69,7 +69,7 @@ function runHandles()
 	while ($row = mysqli_fetch_array($haku)){
 		$thispage = "";
 		if ($row['uid'] == $uid){
-		$thispage = "thispage";
+			$thispage = "thispage";
 		}
 		echo '
 		<a class="'. $row['color'] .'" href="?s='. $row['uid'] .'" id="'. $thispage .'">

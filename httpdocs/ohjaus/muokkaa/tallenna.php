@@ -1,11 +1,8 @@
 <!--Kotisivut Riika/Hevoset, draft 1; /ohjaus/muokkaa/tallenna.php-->
 <?php
 
-session_start();
-include "../passphrase.php";
-$pwd = $_SESSION["pwd"];
 
-$logged = $pwd == $key;
+include "../passphrase.php";
 
 
 function parse($input, $con){

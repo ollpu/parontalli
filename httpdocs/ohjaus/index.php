@@ -3,13 +3,13 @@
 
 $rel = "../";
 
-session_start();
+
 include "passphrase.php";
 
-$pwd = $_SESSION["pwd"];
-	if ($pwd == $key){
-		header( 'Location: ./paneeli.php' );
-	}
+
+if ($logged){
+	header( 'Location: ./paneeli.php' );
+}
 ?>
 <html>
 <head>

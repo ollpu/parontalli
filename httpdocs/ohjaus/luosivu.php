@@ -1,9 +1,8 @@
 <!--Kotisivut Riika/Hevoset, draft 1; /ohjaus/luosivu.php-->
 <?php
-session_start();
+
 include "passphrase.php";
-$pwd = $_SESSION["pwd"];
-	$logged = $key == $pwd;
+
 
 function parse($input, $con){
 	return mysqli_real_escape_string($con, $input);

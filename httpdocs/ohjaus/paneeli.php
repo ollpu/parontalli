@@ -5,11 +5,8 @@ $rel = "../";
 
 include $rel."db.php";
 
-session_start();
-include "passphrase.php";
-$pwd = $_SESSION["pwd"];
 
-$logged = $pwd == $key;
+include "passphrase.php";
 
 ?>
 <html>
@@ -55,35 +52,35 @@ Tervetuloa!
 	
 	<?
 		if ($logged == true){
-		if ($_GET['msg'] == "login"){$msg = "Olet nyt kirjautunut sisään!";}
-		if ($_GET['msg'] == "existing"){$msg = "Tämä sivu on jo olemassa!";}
-		if ($_GET['msg'] == "created"){$msg = "Uusi sivu luotiin onnistuneesti.";}
-		if ($_GET['msg'] == "edited"){$msg = "Sivun muokkaus onnistui.";}
-		if ($_GET['msg'] == "deleted"){$msg = "Sivun poisto onnistui.";}
-		if ($_GET['msg'] == "order"){$msg = "Järjestyksen vaihto onnistui.";}
-		if ($_GET['msg'] == "orderdupl"){$msg = "<span class='varoitus'>Virhe! Sivujen järjestystä ei voitu vaihtaa, koska asetit useammalle sivulle saman numeron!</span>";}
-		echo '
-		<p class="content">
-		'. $msg .'<br>
-		</p>
-		<div class="paneeli">';
-		$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");
-		while ($row = mysqli_fetch_array($haku)){
+			if ($_GET['msg'] == "login")	{$msg = "Olet nyt kirjautunut sisään!";}
+			if ($_GET['msg'] == "existing")	{$msg = "Tämä sivu on jo olemassa!";}
+			if ($_GET['msg'] == "created")	{$msg = "Uusi sivu luotiin onnistuneesti.";}
+			if ($_GET['msg'] == "edited")	{$msg = "Sivun muokkaus onnistui.";}
+			if ($_GET['msg'] == "deleted")	{$msg = "Sivun poisto onnistui.";}
+			if ($_GET['msg'] == "orderdupl"){$msg = "<span class='varoitus'>Virhe! Sivujen järjestystä ei voitu vaihtaa, koska asetit useammalle sivulle saman arvon!</span>";}
+			if ($_GET['msg'] == "order")	{$msg = "Järjestyksen vaihto onnistui.";}
 			echo '
-		<a class="pane sininen" href="./muokkaa?esivu='. $row['id'] .'">
-		<span class="inpane">Muokkaa sivua<br>' . $row['nimi'] . '</span>
-		</a>';
-		}
-		echo '
-		<a class="pane keltainen" href="./order.php">
-		<span class="inpane">Vaihda sivujen järjestystä</span>
-		</a>';
-		echo '
-		<a class="pane vihrea" href="./usivu.php">
-		<span class="inpane">Luo uusi sivu</span>
-		</a>';
-		echo '</div>';
-		}else echo "V&auml;&auml;r&auml; sala-avain. <a href='./'>Yrit&auml; uudellen t&auml;st&auml;.</a>";
+			<p class="content">
+			'. $msg .'<br>
+			</p>
+			<div class="paneeli">';
+			$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");
+			while ($row = mysqli_fetch_array($haku)){
+				echo '
+				<a class="pane sininen" href="./muokkaa?esivu='. $row['id'] .'">
+				<span class="inpane">Muokkaa sivua<br>' . $row['nimi'] . '</span>
+				</a>';
+			}
+			echo '
+			<a class="pane keltainen" href="./jarjestys/">
+			<span class="inpane">Vaihda sivujen järjestystä</span>
+			</a>';
+			echo '
+			<a class="pane vihrea" href="./usivu.php">
+			<span class="inpane">Luo uusi sivu</span>
+			</a>';
+			echo '</div>';
+		}else echo "Väärä sala-avain. <a href='./'>Yritä uudellen tästä.</a>";
 	?>
 	
 </div>

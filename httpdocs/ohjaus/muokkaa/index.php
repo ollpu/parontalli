@@ -5,16 +5,11 @@ $rel = "../../";
 
 
 include $rel."db.php";
-if (mysqli_connect_errno()) {
-	echo "Virhe yhdistettäessä tietokantaan: " . mysqli_connect_error();
-	end();
-}
 
-session_start();
+
+
 include "../passphrase.php";
-$pwd = $_SESSION["pwd"];
 
-$logged = $pwd == $key;
 ?>
 <html>
 <head>

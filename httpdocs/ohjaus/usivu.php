@@ -2,11 +2,9 @@
 <?
 $rel = "../";
 
-session_start();
-include "passphrase.php";
-$pwd = $_SESSION["pwd"];
 
-$logged = $pwd == $key;
+include "passphrase.php";
+
 
 ?>
 <html>

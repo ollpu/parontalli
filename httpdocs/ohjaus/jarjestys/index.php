@@ -1,15 +1,13 @@
 <!--Kotisivut Riikka/Hevoset, draft 1; /ohjaus/order.php-->
 <?
 
-$rel = "../";
+$rel = "../../";
 
-session_start();
+
 
 include $rel."db.php";
 
-include "passphrase.php";
-$pwd = $_SESSION["pwd"];
-$logged = $pwd == $key;
+include $rel."ohjaus/passphrase.php";
 
 if(!$logged) {
 	exit("Et ole kirjautunut sis&auml;&auml;n!");
@@ -54,7 +52,7 @@ if(!$logged) {
 			var elm = document.getElementById(oriVal);
 			elm.style.order = curVal;
 	</script>
-	<form action="./s_order.php" method="post" id="orderform">
+	<form action="./save.php" method="post" id="orderform">
 		<div style="display: flex;" id="flex">
 		<?
 		$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");
