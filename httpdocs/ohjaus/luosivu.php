@@ -23,13 +23,13 @@ if ($logged == true){
 	include "../db.php";
 
 
-	$haku = mysqli_query($yht, "SELECT * FROM sivut WHERE nimi='". parse($_POST["nimi"], $yht) ."'");
-	if (mysqli_fetch_array($haku) !== false){
-		
-		$query = "INSERT INTO sivut (nimi, teksti, kuva, color, selitys, uid) VALUES ('". parse($_POST["nimi"], $yht) ."', '". parse($_POST["teksti"], $yht) ."', '". parse($_POST["kuva"], $yht) ."', '". parse($_POST["vari"], $yht) ."', '". parse($_POST["selitys"], $yht) ."', '". create_uid($yht) ."')";
-		mysqli_query($yht, $query);
-		header( 'Location: ./paneeli.php?msg=created' );
-	} else {header( 'Location: ./paneeli.php?msg=exsisting' );;}
+	
+	
+	$uid = create_uid($yht);
+	$query = "INSERT INTO sivut (uid) VALUES ('". $uid ."')";
+	mysqli_query($yht, $query);
+	header( 'Location: ./muokkaa/index.php?es='.$uid );
+	
 }else{echo "Et ole kirjautunut si&auml;&auml;n. <a href='./'>Yrit&auml; uudellen t&auml;st&auml;.</a>";}
 
 
