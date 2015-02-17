@@ -15,8 +15,11 @@ function parse($input, $con){
 		
 		mysqli_query($yht, "SET NAMES 'utf8'");
 		
-		$query = "UPDATE sivut SET nimi = '". parse($_POST['nimi'], $yht) ."', kuva = '". parse($_POST['kuva'], $yht) ."', color = '". parse($_POST['vari'], $yht) ."', teksti = '". parse($_POST['teksti'], $yht) ."', html = '". parse($_POST['html'], $yht) ."', selitys = '". parse($_POST['selitys'], $yht) ."' WHERE uid = ". $_POST['uid'];
-		mysqli_query($yht, $query); 
-		header( 'Location: ../paneeli.php?msg=edited' );
+		$query = "UPDATE sivut SET nimi = '". parse($_POST['nimi'], $yht) ."', kuva = '". parse($_POST['kuva'], $yht) ."', color = '". parse($_POST['vari'], $yht) ."', teksti = '". parse($_POST['teksti'], $yht) ."', html = '". parse($_POST['html'], $yht) ."', selitys = '". parse($_POST['selitys'], $yht) ."' WHERE uid = '". $_POST['uid'] ."'";
+		if(mysqli_query($yht, $query)) {
+			header( 'Location: ../paneeli.php?msg=edited' );
+		} else {
+			header( 'Location: ../paneeli.php?msg=editf' );
+		}
 	}else{echo "Et ole kirjautunut si&auml;&auml;n. <a href='./'>Yrit&auml; uudellen t&auml;st&auml;.</a>";}
 ?>

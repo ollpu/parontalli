@@ -56,6 +56,7 @@ Tervetuloa!
 			if ($_GET['msg'] == "existing")	{$msg = "Tämä sivu on jo olemassa!";}
 			if ($_GET['msg'] == "created")	{$msg = "Uusi sivu luotiin onnistuneesti.";}
 			if ($_GET['msg'] == "edited")	{$msg = "Sivun muokkaus onnistui.";}
+			if ($_GET['msg'] == "editf")    {$msg = "<span class='varoitus'>Sivua tallennettaessa tapahtui jokin virhe! Jos ongelma toistuu, ota yhteyttä Roopeen.</span>";}
 			if ($_GET['msg'] == "deleted")	{$msg = "Sivun poisto onnistui.";}
 			if ($_GET['msg'] == "orderdupl"){$msg = "<span class='varoitus'>Virhe! Sivujen järjestystä ei voitu vaihtaa, koska asetit useammalle sivulle saman arvon!</span>";}
 			if ($_GET['msg'] == "order")	{$msg = "Järjestyksen vaihto onnistui.";}

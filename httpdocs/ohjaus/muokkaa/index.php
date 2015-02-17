@@ -60,7 +60,7 @@ Muokkaa sivua
 		echo '
 		<a href="../paneeli.php">Peruuta</a><br>
 		<form name="esivu" action="tallenna.php" method="post">
-		Sivun nimi: <input type="text" name="nimi" value="'. $eprow['nimi'] .'"><br>
+		Sivun nimi: <input type="text" name="nimi" value="'. htmlspecialchars($eprow['nimi']) .'"><br>
 		Kuva (URL): <input type="text" name="kuva" value="'. $eprow['kuva'] .'"><br>
 		Väri: <select name="vari">
 					<option value="sininen" '. 		$sininen .'>Sininen</option>
@@ -70,12 +70,12 @@ Muokkaa sivua
 					<option value="kulta" '. 		$kulta .'>Kullankeltainen</option>
 					</select>
 		<br>
-		Teksti:<br><textarea name="teksti" rows="10" cols="30">'. $eprow['teksti'] .'</textarea>
+		Teksti:<br><textarea name="teksti" rows="10" cols="30">'. htmlspecialchars($eprow['teksti']) .'</textarea>
 		<br>
 		Selitys: (hakukoneille)<br><textarea name="selitys" rows="4" cols="20">'. $eprow['selitys'] .'</textarea> 
 		<input type="hidden" name="uid" value="'. $eprow['uid'] .'">
 		<br>
-		HTML: (Roope t&auml;ytt&auml;&auml;)<br><textarea name="html" rows="1" cols="10">'. $eprow['html'] .'</textarea>
+		HTML: (Roope t&auml;ytt&auml;&auml;)<br><textarea name="html" rows="1" cols="10">'. htmlspecialchars($eprow['html']) .'</textarea>
 		<br>
 		<input type="submit" value="Tallenna">
 		</form>
