@@ -77,7 +77,7 @@ Tervetuloa!
 			<span class="inpane">Vaihda sivujen järjestystä</span>
 			</a>';
 			echo '
-			<a class="pane vihrea" href="./luosivu.php">
+			<a class="pane vihrea" href="./luoivu.php">
 			<span class="inpane">Luo uusi sivu</span>
 			</a>';
 			echo '
