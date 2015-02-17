@@ -2,10 +2,16 @@
 
 //GitHub webhook: push
 
-if($_POST['ref'] == "refs/heads/master") {
-	echo("Pushed to master!");
-} else if($_POST['ref'] == "refs/heads/dev") {
-	echo("Pushed to dev!");
-} else echo($_POST['ref']);
-
+if($_POST[ 'payload' ]) {
+	echo("Payload recieved.");
+	$pl = json_decode($_POST['payload'], true);
+	//echo(print_r($pl));
+	if($pl['ref'] == "refs/heads/master") {
+		echo("\n<br>Pushed to master branch.");
+	}
+	if($pl['ref'] == "refs/heads/dev") {
+		echo("\n<br>Pushed to dev branch.");
+	}
+	
+}
 ?>
