@@ -33,14 +33,11 @@ if(!$logged) {
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-	<a class="punainen" href="../paneeli.php" id="">
-		&nbsp;Peruuta&nbsp;
-	</a>
-	&nbsp;&nbsp;
-	<a class="vihrea" href="./" id="thispage">
-		&nbsp;Vaihda sivujen järjestystä&nbsp;
-	</a>
-	&nbsp;&nbsp;
+	<?php
+		createLink("punainen", "../paneeli.php", "", "Peruuta");
+		createLink("vihrea", "./", "thispage", "Vaihda sivujen järjestystä");
+	?>
+
 	<hr class="header" id="">
 </div>
 
@@ -56,7 +53,7 @@ if(!$logged) {
 		<div style="display: flex;" id="flex">
 		<?
 		$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");
-		
+
 		$ordnum = 0;
 		while ($row = mysqli_fetch_array($haku)){
 			$ordnum++;

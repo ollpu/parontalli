@@ -29,17 +29,12 @@ include "passphrase.php";
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-	<a class="sininen" href="../" id="">
-		&nbsp;Takaisin&nbsp;
-	</a>
-	&nbsp;&nbsp;
-	<a class="vihrea" href="./" id="thispage">
-		&nbsp;Ohjaus&nbsp;
-	</a>
-	&nbsp;&nbsp;
-	<a class="punainen" href="./logout.php" id="">
-		&nbsp;Kirjaudu ulos&nbsp;
-	</a>
+	<?php
+		createLink("sininen", 	"../", 					"", 				"Takaisin"			);
+		createLink("vihrea", 		"./", 					"thispage", "Ohjaus"				);
+		createLink("punainen", 	"./logout.php", "", 				"Kirjaudu ulos"	);
+	?>
+
 	<hr class="header" id="">
 </div>
 
@@ -49,7 +44,7 @@ include "passphrase.php";
 	<h2>
 Tervetuloa!
 	</h2>
-	
+
 	<?
 		if ($logged == true){
 			if ($_GET['msg'] == "login")	{$msg = "Olet nyt kirjautunut sisään!";}
@@ -87,7 +82,7 @@ Tervetuloa!
 			echo '</div>';
 		}else echo "Väärä sala-avain. <a href='./'>Yritä uudellen tästä.</a>";
 	?>
-	
+
 </div>
 <?php include $rel."skeleton/footer.php" ?>
 </body>

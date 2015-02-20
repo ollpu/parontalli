@@ -32,14 +32,11 @@ include $rel."ohjaus/passphrase.php"
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-	<a class="sininen" href="../" id="">
-	&nbsp;Takaisin&nbsp;
-	</a>
-	&nbsp;&nbsp;
-	<a class="vihrea" href="./" id="thispage">
-	&nbsp;Tietokanta&nbsp;
-	</a>
-	&nbsp;&nbsp;
+	<?php
+		createLink("sininen", "../", 	"", 				"Takaisin"	);
+		createLink("vihrea", 	"./", 	"thispage", "Tietokanta");
+	?>
+
 	<hr class="header">
 </div>
 

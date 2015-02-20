@@ -29,10 +29,10 @@ include $rel."db.php";
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-	<a class="sininen" href="./" id="thispage">
-	&nbsp;Template Site&nbsp;
-	</a>
-	&nbsp;&nbsp;
+	<?php
+		createLink("sininen", "./", "thispage", "Template Site");
+	?>
+
 	<hr class="header">
 </div>
 

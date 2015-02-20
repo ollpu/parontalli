@@ -31,13 +31,11 @@ include "../passphrase.php";
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-	<a class="sininen" href="../" id="">
-		&nbsp;Takaisin&nbsp;
-	</a>
-	&nbsp;&nbsp;
-	<a class="punainen" href="./" id="thispage">
-		&nbsp;Muokkaa&nbsp;
-	</a>
+	<?php
+		createLink("sininen", 	"../", 	"", 				"Takaisin");
+		createLink("punainen", 	"./", 	"thispage", "Muokkaa"	);
+	?>
+
 	<hr class="header" id="">
 </div>
 
@@ -45,18 +43,18 @@ include "../passphrase.php";
 	<h2>
 Muokkaa sivua
 	</h2>
-	
+
 	<?
 		if ($logged == true){
 		$haku_ep = mysqli_query($yht, "SELECT * FROM sivut WHERE uid = '". $_GET['es'] ."'");
 		$eprow = mysqli_fetch_assoc($haku_ep);
-		
+
 		if ($eprow['color'] == "punainen"){$punainen = "selected";}
 		if ($eprow['color'] == "sininen"){$sininen = "selected";}
 		if ($eprow['color'] == "vihrea"){$vihrea = "selected";}
 		if ($eprow['color'] == "s_sininen"){$s_sininen = "selected";}
 		if ($eprow['color'] == "kulta"){$kulta = "selected";}
-		
+
 		echo '
 		<a href="../paneeli.php">Peruuta</a><br>
 		<form name="esivu" action="tallenna.php" method="post">
@@ -72,7 +70,7 @@ Muokkaa sivua
 		<br>
 		Teksti:<br><textarea name="teksti" rows="10" cols="30">'. htmlspecialchars($eprow['teksti']) .'</textarea>
 		<br>
-		Selitys: (hakukoneille)<br><textarea name="selitys" rows="4" cols="20">'. $eprow['selitys'] .'</textarea> 
+		Selitys: (hakukoneille)<br><textarea name="selitys" rows="4" cols="20">'. $eprow['selitys'] .'</textarea>
 		<input type="hidden" name="uid" value="'. $eprow['uid'] .'">
 		<br>
 		HTML: (Roope t&auml;ytt&auml;&auml;)<br><textarea name="html" rows="1" cols="10">'. htmlspecialchars($eprow['html']) .'</textarea>
@@ -84,7 +82,7 @@ Muokkaa sivua
 		';
 		}else echo "Et ole kirjautunut sis&auml;&auml;n. <a href='../'>Yrit&auml; uudellen t&auml;st&auml;.</a>";
 	?>
-	
+
 </div>
 <?php include $rel."skeleton/footer.php" ?>
 </body>
