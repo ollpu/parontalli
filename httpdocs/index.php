@@ -71,11 +71,7 @@ function runHandles()
 		if ($row['uid'] == $uid){
 			$thispage = "thispage";
 		}
-		echo '
-		<a class="'. $row['color'] .'" href="?s='. $row['uid'] .'" id="'. $thispage .'">
-		&nbsp;'. $row['nimi'] .'&nbsp;
-		</a>
-		&nbsp;&nbsp;';
+		createLink($row['color'], $row['uid'], $thispage, $row['nimi']);
 	}
 	?>
 	<hr class="header" id="">

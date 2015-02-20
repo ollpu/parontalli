@@ -3,11 +3,21 @@
 <br/>
 <div class="header">
 	<h1>Parontalli</h1>
-	<? 
+	<?
 		if(substr($_SERVER[REQUEST_URI], 0, 4) == '/dev') {
-			echo("Olet /dev/ sivuilla. 
+			echo("Olet /dev/ sivuilla.
 Näillä sivuilla kokeillaan kehitystyön alla olevia toimintoja, joten jotkin toiminnot voivat olla epävakaita.");
-		} 
+		}
 	?>
 	<br/>
 </div>
+<?php
+
+function createLink($color, $uid, $thispage, $nimi) {
+	echo '<a class="'. $color .'" href="?s='. $uid .'" id="'. $thispage .'">
+	&nbsp;'. $nimi .'&nbsp;
+	</a>
+	&nbsp;&nbsp;';
+}
+
+?>
