@@ -17,7 +17,8 @@ function createLink($color, $target, $thispage, $nimi) {
 	echo '<a class="'. $color .'" href="'. $target .'" id="'. $thispage .'">
 	&nbsp;'. $nimi .'&nbsp;
 	</a>
-	&nbsp;&nbsp;';
+	&nbsp;&nbsp;
+	';
 }
 
 ?>
