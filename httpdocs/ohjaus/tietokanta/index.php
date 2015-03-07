@@ -5,7 +5,7 @@ $rel = "../../";
 
 include $rel."db.php";
 
-include $rel."ohjaus/passphrase.php"
+include $rel."ohjaus/passphrase.php";
 
 
 
@@ -13,23 +13,21 @@ include $rel."ohjaus/passphrase.php"
 <html>
 <head>
 
-<?php include $rel."skeleton/metas.php" ?>
+<?php include $rel."skeleton/metas.php"; ?>
 
 
 <title>
 	Ohjaus - Tietokanta
 </title>
 
-<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" class="text/css" href="<? print($rel); ?>main.css">
+<?php include $rel."skeleton/styles.php"; ?>
 
 </head>
 
 
 <body>
 
-<?php include $rel."skeleton/header.php" ?>
+<?php include $rel."skeleton/header.php"; ?>
 
 <div class="nav">
 	<?php
@@ -51,16 +49,20 @@ Eläinten tietokanta
 
 <div class="paneeli mini">
 <?php
+function createPane($class, $href, $text) {
+	echo('
+		<a class="pane '.$class.'" href="'.$href.'">
+		<span class="inpane">
+		'. $text .'
+		</span>
+		</a>
+	');
+}
+
 if($logged) {
 	$query = mysqli_query($yht, "SELECT * FROM animals");
 	while($row = mysqli_fetch_array($query)) {
-		echo('
-		<a class="pane vihrea">
-		<span class="inpane">
-		Katsele kohdetta '.$row['id_name'].'
-		</span>
-		</a>
-		');
+		createPane("vihrea", "./", $row['id_name']);
 	}
 } else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../'>tästä</a>.");
 ?>

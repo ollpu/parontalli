@@ -6,11 +6,11 @@ $rel = "./";
 
 include $rel."db.php";
 
-include $rel."ohjaus/passphrase.php"
+include $rel."ohjaus/passphrase.php";
 //$logged == true if logged in.
 
 //Use this if you don't want to make your own notlogged (this one is quite crude)
-include $rel."ohjaus/default_notlogg.php"
+include $rel."ohjaus/default_notlogg.php";
 
 ?>
 <html>
@@ -23,16 +23,14 @@ include $rel."ohjaus/default_notlogg.php"
 	Template
 </title>
 
-<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" class="text/css" href="<? print($rel); ?>main.css">
+<?php include $rel."skeleton/styles.php"; ?>
 
 </head>
 
 
 <body>
 
-<?php include $rel."skeleton/header.php" ?>
+<?php include $rel."skeleton/header.php"; ?>
 
 <div class="nav">
 	<?php
