@@ -62,7 +62,7 @@ function createPane($class, $href, $text) {
 if($logged) {
 	$query = mysqli_query($yht, "SELECT * FROM animals");
 	while($row = mysqli_fetch_array($query)) {
-		createPane("vihrea", "./", $row['id_name']);
+		createPane("vihrea", "./katsele/?id=".$row['id_name'], $row['id_name']);
 	}
 } else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../'>tästä</a>.");
 ?>

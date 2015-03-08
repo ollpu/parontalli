@@ -15,7 +15,7 @@ $fprow = mysqli_fetch_assoc($haku_fp);
 if(!isset($_GET["s"]))	{$_GET['s'] = $fprow['uid'];}
 
 
-$haku_s = mysqli_query($yht, "SELECT * FROM `sivut` WHERE uid = '". $_GET['s'] . "'");
+$haku_s = mysqli_query($yht, "SELECT * FROM `sivut` WHERE uid = '".$_GET['s']."' LIMIT 1");
 
 
 $pagerow = mysqli_fetch_assoc($haku_s);
