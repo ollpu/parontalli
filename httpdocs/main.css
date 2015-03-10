@@ -106,7 +106,8 @@ img.header {
   width:90%;
   border-bottom-left-radius:20px;
 }
-img.content {
+
+div.img>img {
   transition-duration:inherit;
   -webkit-transition-duration:2s;
   width:100%;

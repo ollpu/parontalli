@@ -23,34 +23,40 @@ function createLink($color, $target, $thispage, $nimi) {
 
 function displayAnimalById($yht, $animalid, $displayprice) {
 	$query = mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '".$animalid."' LIMIT 1");
-	$row = mysqli_fetch_assoc($query);
-	$imagerows = explode(';', $row['img']);
-	$images = array();
-	foreach($imagerows as $key => $imagerow) {
-		$images[$key] = explode(',', $imagerow);
-	}
-	displayAnimal(1, $row['name'], $images, $row['link'], $row['sukuposti'], $row['text'], $row['price']);
+	if($row['id_name'] != "") {
+		$row = mysqli_fetch_assoc($query);
+		$imagerows = array();
+		if(trim($row['img']) != "") {
+			$imagerows = explode(';', $row['img']);
+			$images = array();
+			foreach($imagerows as $key => $imagerow) {
+				$images[$key] = explode(',', $imagerow);
+			}
+		}
+		displayAnimal(1, $row['name'], $images, $row['link'], $row['sukuposti'], $row['text'], $row['price'], $displayprice);
+	//if not found, display a warning message
+	} else print("<br><span class='varoitus'>Varoitus!</span> Pyytämääsi eläintä ('$animalid') ei löytynyt tietokannasta!</br>");
 }
 
-function displayAnimal($id, $name, $images, $links, $sukuposti, $text, $price) {
+function displayAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $displayprice) {
 	//Title
 	echo("
 	<h2 id='otsikko$id'>$name</h2><br/>
 	");
 	//Images, in rows
-	foreach($images as $imagerow) {
+	if(count($images)) foreach($images as $imagerow) {
 		echo("
-		<div class='img".count($imagerow)."'>
+		<div class='img img".count($imagerow)."'>
 		");
 		foreach($imagerow as $image) {
 			echo("
-			<img class='content' src='$image'> ");
+			<img src='$image'> ");
 		}
-		echo("</div><br/>
+		echo("
+		</div><br/>
 		");
 	}
 	echo("
-	<br/>
 	");
 	if($links != "") {
 		echo("
@@ -59,11 +65,16 @@ function displayAnimal($id, $name, $images, $links, $sukuposti, $text, $price) {
 		");
 	}
 	if($sukuposti != "") {
-		echo("<a href='$sukuposti'>Sukuposti</a><br/>
+		echo("<br/><a href='$sukuposti'>Sukuposti</a><br/>
 		");
 	}
 	echo(nl2br($text));
-	
+	echo("
+	<br/><br/>
+	");
+	if($displayprice) {
+		echo(nl2br($price));
+	}
 	
 }
 

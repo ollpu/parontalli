@@ -52,6 +52,25 @@ include $rel."ohjaus/passphrase.php";
 if($logged) {
 	$animalid = $_GET['id'];
 	displayAnimalById($yht, $animalid, true);
+	echo("<br/><br/>
+	<table border='2'>
+		<tr>
+			
+			<td>
+				<form name='muokkaa' action='../muokkaa/?id=$animalid'>
+					<input type='submit' value='Muokkaa' />
+				</form>
+			</td>
+			
+			<td>
+				<form name='copycode' onsubmit='window.prompt(\"Kopioi sijoituskoodi\", \"<!---->\");'>
+					<input type='submit' value='Kopio sijoituskoodi'>
+				</form>
+			</td>
+			
+		</tr>
+	</table>
+	");
 	
 } else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../'>tästä</a>.");
 ?>
