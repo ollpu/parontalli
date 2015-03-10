@@ -63,7 +63,7 @@ if($logged) {
 			</td>
 			
 			<td>
-				<form name='copycode' onsubmit='window.prompt(\"Kopioi sijoituskoodi\", \"<!---->\");'>
+				<form name='copycode' onsubmit='window.prompt(\"Kopioi sijoituskoodi\", \"<!--$animalid-->\");'>
 					<input type='submit' value='Kopio sijoituskoodi'>
 				</form>
 			</td>

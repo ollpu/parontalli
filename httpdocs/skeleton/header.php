@@ -28,8 +28,8 @@ function createLink($color, $target, $thispage, $nimi) {
 
 function displayAnimalById($yht, $animalid, $displayprice) {
 	$query = mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '".$animalid."' LIMIT 1");
+	$row = mysqli_fetch_assoc($query);
 	if($row['id_name'] != "") {
-		$row = mysqli_fetch_assoc($query);
 		$imagerows = array();
 		if(trim($row['img']) != "") {
 			$imagerows = explode(';', $row['img']);
@@ -40,7 +40,7 @@ function displayAnimalById($yht, $animalid, $displayprice) {
 		}
 		displayAnimal(1, $row['name'], $images, $row['link'], $row['sukuposti'], $row['text'], $row['price'], $displayprice);
 	//if not found, display a warning message
-} else echo("<br><span class='varoitus'>Varoitus!</span> Pyytämääsi eläintä ('$animalid') ei löytynyt tietokannasta!</br>");
+	} else echo("<br><span class='varoitus'>Varoitus!</span> Pyytämääsi eläintä ('$animalid') ei löytynyt tietokannasta!</br>");
 }
 
 function displayAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $displayprice) {
