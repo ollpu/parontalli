@@ -31,7 +31,7 @@ include $rel."ohjaus/passphrase.php";
 
 <div class="nav">
 	<?php
-		createLink("sininen", "../", 	"", 				"Takaisin"			               );
+		createLink("punainen", "../katsele/?id=".$_GET['id'], "", "Peruuta"      );
 		createLink("vihrea", 	"./", 	"thispage", "Muokkaa eläintä tietokannassa");
 	?>
 
@@ -69,12 +69,12 @@ if($logged) {
       </tr>
       <tr>
         <td>Kuvat: </td>
-        <td><textarea name='img' rows='3' cols='20'>". htmlspecialchars($row['img']) ."</textarea></td>
-        <td>&nbsp&nbspKuvia eläimestä (linkkeinä). Erota linkit ',' merkeillä ja rivit ';' merkeillä. Yhdellä rivillä voi olla enintään 4 kuvaa.</td>
+        <td><textarea name='img' rows='3' cols='31'>". htmlspecialchars($row['img']) ."</textarea></td>
+        <td>&nbsp&nbspKuvia eläimestä (linkkeinä). Erota kuvat pilkuilla (\",\") ja rivit rivinvaihdoilla. Yhdellä rivillä voi olla enintään 4 kuvaa.</td>
       </tr>
       <tr>
         <td>Linkit:</td>
-        <td><textarea name='link' rows='2' cols='20'>". htmlspecialchars($row['link']) ."</textarea></td>
+        <td><textarea name='link' rows='2' cols='31'>". htmlspecialchars($row['link']) ."</textarea></td>
       </tr>
       <tr>
         <td>Sukuposti-linkki: </td>
@@ -83,12 +83,16 @@ if($logged) {
       </tr>
       <tr>
         <td>Leipäteksti: </td>
-        <td><textarea name='text' rows='10' cols='30'>". htmlspecialchars($row['text']) ."</textarea></td>
+        <td><textarea name='text' rows='10' cols='31'>". htmlspecialchars($row['text']) ."</textarea></td>
       </tr>
       <tr>
         <td>Hinta: </td>
-        <td><input type='text' name='price' value='". htmlspecialchars($row['price']) ."'/></td>
+        <td><textarea name='price' rows='2' cols='31'>". htmlspecialchars($row['price']) ."</textarea></td>
         <td>&nbsp&nbspVoit valita sijoituskohtaisesti, näytetäänkö hintaa vai ei.</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td style='text-align: center; '><input type='submit' value='Tallenna'></td>
       </tr>
   	</table>
   </form>

@@ -1,7 +1,7 @@
-<!--Kotisivut Riikka/Hevoset; /ohjaus/tietokanta/index.php-->
+<!--Kotisivut Riikka/Hevoset; /ohjaus/tietokanta/muokkaa/index.php-->
 
 <?
-$rel = "../../";
+$rel = "../../../";
 
 include $rel."db.php";
 
@@ -17,7 +17,7 @@ include $rel."ohjaus/passphrase.php";
 
 
 <title>
-	Ohjaus - Tietokanta
+	Tietokanta - Muokkaa
 </title>
 
 <?php include $rel."skeleton/styles.php"; ?>
@@ -31,8 +31,8 @@ include $rel."ohjaus/passphrase.php";
 
 <div class="nav">
 	<?php
-		createLink("sininen", "../", 	"", 				"Takaisin"	);
-		createLink("vihrea", 	"./", 	"thispage", "Tietokanta");
+		createLink("sininen", "../", 	"", 				"Takaisin"			               );
+		createLink("vihrea", 	"./", 	"thispage", "Muokkaa eläintä tietokannassa");
 	?>
 
 	<hr class="header">
@@ -43,30 +43,64 @@ include $rel."ohjaus/passphrase.php";
 
 <div class="content"><br>
 
-<h2>
-Eläinten tietokanta
-</h2><br/>
+<br/>
 
-<div class="paneeli mini">
+
 <?php
-function createPane($class, $href, $text) {
-	echo('
-		<a class="pane '.$class.'" href="'.$href.'">
-		<span class="inpane">
-		'. $text .'
-		</span>
-		</a>
-	');
-}
+
 
 if($logged) {
-	$query = mysqli_query($yht, "SELECT * FROM animals");
-	while($row = mysqli_fetch_array($query)) {
-		createPane("vihrea", "./katsele/?id=".$row['id_name'], $row['id_name']);
-	}
-} else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../'>tästä</a>.");
+	$animalid = $_GET['id'];
+  
+  $query = mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '".$animalid."' LIMIT 1");
+	$row = mysqli_fetch_assoc($query);
+	
+  echo("
+  <form name='edit' method='POST' action='./tallenna.php'>
+  	<table border='0'>
+  		<tr>
+  			<td>Nimi: </td>
+        <td><input type='text' name='id_name' value='$animalid' disabled/></td>
+        <td>&nbsp&nbspEläimen \"kutsumanimi\" (ei koskaan näytetä kävijälle).</td>
+  		</tr>
+      <tr>
+        <td>Otsikko: </td>
+        <td><input type='text' name='name' value='". htmlspecialchars($row['name']) ."'/></td>
+      </tr>
+      <tr>
+        <td>Kuvat: </td>
+        <td><textarea name='img' rows='3' cols='20'>". htmlspecialchars($row['img']) ."</textarea></td>
+        <td>&nbsp&nbspKuvia eläimestä (linkkeinä). Erota linkit ',' merkeillä ja rivit ';' merkeillä. Yhdellä rivillä voi olla enintään 4 kuvaa.</td>
+      </tr>
+      <tr>
+        <td>Linkit:</td>
+        <td><textarea name='link' rows='2' cols='20'>". htmlspecialchars($row['link']) ."</textarea></td>
+      </tr>
+      <tr>
+        <td>Sukuposti-linkki: </td>
+        <td><input type='text' name='sukuposti' value='". htmlspecialchars($row['sukuposti']) ."'/></td>
+        <td>&nbsp&nbspJätä tyhjäksi jos ei ole.</td>
+      </tr>
+      <tr>
+        <td>Leipäteksti: </td>
+        <td><textarea name='text' rows='10' cols='30'>". htmlspecialchars($row['text']) ."</textarea></td>
+      </tr>
+      <tr>
+        <td>Hinta: </td>
+        <td><input type='text' name='price' value='". htmlspecialchars($row['price']) ."'/></td>
+        <td>&nbsp&nbspVoit valita sijoituskohtaisesti, näytetäänkö hintaa vai ei.</td>
+      </tr>
+      <td></td>
+      <tr>
+        <td style='text-align: center; '><input type='submit' value='Tallenna'></td>
+      </tr>
+  	</table>
+  </form>
+	");
+	
+} else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../../'>tästä</a>.");
 ?>
-</div>
+
 
 </div>
 

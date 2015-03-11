@@ -32,7 +32,7 @@ function displayAnimalById($yht, $animalid, $displayprice) {
 	if($row['id_name'] != '') {
 		$imagerows = array();
 		if(trim($row['img']) != '') {
-			$imagerows = explode(';', $row['img']);
+			$imagerows = explode("\n", $row['img']);
 			$images = array();
 			foreach($imagerows as $key => $imagerow) {
 				$images[$key] = explode(',', $imagerow);
