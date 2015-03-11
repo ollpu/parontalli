@@ -53,7 +53,7 @@ if($logged) {
 	$animalid = $_GET['id'];
 	displayAnimalById($yht, $animalid, true);
 	echo("<br/><br/>
-	<table border='2'>
+	<table border='0'>
 		<tr>
 			
 			<td>
@@ -63,8 +63,16 @@ if($logged) {
 			</td>
 			
 			<td>
-				<form name='copycode' onsubmit='window.prompt(\"Kopioi sijoituskoodi\", \"<!--$animalid-->\");'>
-					<input type='submit' value='Kopio sijoituskoodi'>
+				<form name='copycode' method='GET' onsubmit='window.prompt(\"Kopioi alla oleva sijoituskoodi manuaalisesti\", \"<!--$animalid&true-->\");'>
+					<input type='hidden' name='id' value='$animalid'/>
+					<input type='submit' value='Kopio sijoituskoodi, näytä hinta'>
+				</form>
+			</td>
+			
+			<td>
+				<form name='copycode' method='GET' onsubmit='window.prompt(\"Kopioi alla oleva sijoituskoodi manuaalisesti\", \"<!--$animalid&false-->\");'>
+					<input type='hidden' name='id' value='$animalid'/>
+					<input type='submit' value='Kopio sijoituskoodi, älä näytä hintaa'>
 				</form>
 			</td>
 			
@@ -72,7 +80,7 @@ if($logged) {
 	</table>
 	");
 	
-} else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../'>tästä</a>.");
+} else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../../'>tästä</a>.");
 ?>
 
 

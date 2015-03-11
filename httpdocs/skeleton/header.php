@@ -29,9 +29,9 @@ function createLink($color, $target, $thispage, $nimi) {
 function displayAnimalById($yht, $animalid, $displayprice) {
 	$query = mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '".$animalid."' LIMIT 1");
 	$row = mysqli_fetch_assoc($query);
-	if($row['id_name'] != "") {
+	if($row['id_name'] != '') {
 		$imagerows = array();
-		if(trim($row['img']) != "") {
+		if(trim($row['img']) != '') {
 			$imagerows = explode(';', $row['img']);
 			$images = array();
 			foreach($imagerows as $key => $imagerow) {
