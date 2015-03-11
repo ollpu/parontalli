@@ -17,7 +17,7 @@ include $rel."ohjaus/passphrase.php";
 
 
 <title>
-	Ohjaus - Tietokanta
+	Tietokanta - Katsele
 </title>
 
 <?php include $rel."skeleton/styles.php"; ?>
@@ -57,7 +57,8 @@ if($logged) {
 		<tr>
 			
 			<td>
-				<form name='muokkaa' action='../muokkaa/?id=$animalid'>
+				<form name='muokkaa' action='../muokkaa/' method='GET'>
+					<input type='hidden' name='id' value='$animalid'/>
 					<input type='submit' value='Muokkaa' />
 				</form>
 			</td>
@@ -76,7 +77,7 @@ if($logged) {
 				</form>
 			</td>
 			
-		</tr>
+			
 	</table>
 	");
 	
