@@ -41,7 +41,7 @@ include $rel."ohjaus/passphrase.php";
 
 
 
-<div class="content"><br>
+<div class="content">
 
 <h2>
 Eläinten tietokanta
