@@ -14,7 +14,7 @@ include $rel.'ohjaus/passphrase.php';
 		include $rel.'db.php';
 
 		$query = "DELETE FROM animals WHERE id_name = '{$_GET['id']}'";
-		mysqli_query($yht, $query); 
+		mysqli_query($yht, $query);
 		echo($query);
 		header( 'Location: ../' );
 	} else {echo "Et ole kirjautunut si&auml;&auml;n. <a href='{$rel}ohjaus'>Yrit&auml; uudellen t&auml;st&auml;.</a>";}
