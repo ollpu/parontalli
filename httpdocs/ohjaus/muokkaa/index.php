@@ -61,24 +61,24 @@ Muokkaa sivua
 		Väri: <select name="vari">
 						<option value="sininen" '. 		$sininen .'>Sininen</option>
 						<option value="punainen" '. 	$punainen .'>Punainen</option>
-						<option value="vihrea" '. 		$vihrea .'>Vihre&auml;</option>
-						<option value="s_sininen" '. 	$s_sininen .'>S&auml;hk&ouml;nsininen</option>
+						<option value="vihrea" '. 		$vihrea .'>Vihreä</option>
+						<option value="s_sininen" '. 	$s_sininen .'>Sähkönsininen</option>
 						<option value="kulta" '. 		$kulta .'>Kullankeltainen</option>
 					</select>
 		<br>
-		Teksti:<br><textarea name="teksti" rows="10" cols="30">'. htmlspecialchars($eprow['teksti']) .'</textarea>
+		Teksti:<br><textarea name="teksti" rows="10" cols="30">&'. htmlspecialchars($eprow['teksti']) .'</textarea>
 		<br>
 		Selitys: (hakukoneille)<br><textarea name="selitys" rows="4" cols="20">'. $eprow['selitys'] .'</textarea>
 		<input type="hidden" name="uid" value="'. $eprow['uid'] .'">
 		<br>
-		HTML: (Roope t&auml;ytt&auml;&auml;)<br><textarea name="html" rows="1" cols="10">'. htmlspecialchars($eprow['html']) .'</textarea>
+		HTML: (Roope täyttää)<br><textarea name="html" rows="1" cols="10">'. htmlspecialchars($eprow['html']) .'</textarea>
 		<br>
 		<input type="submit" value="Tallenna">
 		</form>
 		<h2>tai</h2>
 		<input type="button" value="Poista sivu" onClick="if(confirm(\'Haluatko varmasti poistaa koko sivun? Tätä ei voi peruuttaa!\'))window.location.href = \'poista.php?uid='. $eprow['uid'] .'\'">
 		';
-		}else echo "Et ole kirjautunut sis&auml;&auml;n. <a href='../'>Yrit&auml; uudellen t&auml;st&auml;.</a>";
+		} else echo "Et ole kirjautunut sisään. <a href='../'>Yritä uudellen tästä.</a>";
 	?>
 
 </div>

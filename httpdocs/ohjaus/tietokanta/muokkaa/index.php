@@ -92,7 +92,13 @@ if($logged) {
       </tr>
       <tr>
         <td></td>
-        <td style='text-align: center; '><input type='submit' value='Tallenna'></td>
+        <td style='text-align: center; '>
+          <input type='submit' name='save' value='Tallenna'>
+          <input type='button' value='Poista'
+            onClick='if(confirm(\"Haluatko varmasti poistaa eläimen $animalid? Tätä ei voi peruuttaa! Sijoituskoodit jätetään sivuille.\"))
+              window.location.href = \"poista.php?id=$animalid\";
+          '>
+        </td>
       </tr>
   	</table>
   </form>
