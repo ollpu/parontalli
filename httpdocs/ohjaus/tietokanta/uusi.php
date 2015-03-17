@@ -48,21 +48,31 @@ include $rel."ohjaus/passphrase.php";
 
 <?php
 
-function parseEntry($in) {
+function checkChars($in) {
   return (strlen($in) >= 1 && strlen($in) <= 24) && !preg_match('/[^a-z|A-Z|0-9|_]/', $in);
+}
+
+function checkDupl($in, $yht) {
+  return mysqli_fetch_array(mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '$in' LIMIT 1")) == false;
 }
 
 
 if($logged) {
 	$animalid = $_GET['id'];
   
-  if(!isset($_GET['id'])) {
+  $validChars = checkChars($animalid);
+  $validDupl = checkDupl($animalid, $yht);
+  
+  if(!$validChars || !$validDupl) {
     
     $query = mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '".$animalid."' LIMIT 1");
   	$row = mysqli_fetch_assoc($query);
-  	echo("Syötä eläimelle kutsumanimi. Tätä nimeä käytetään erottamaan eläimet tietokannassa,"
-      ." joten se ei saa olla sama kuin jollain toisella olemassaolevalla eläimellä.
-      <br>Tämä nimi ei saa sisältää ääkkösiä tai muita erikoismerkkejä (Sallitut merkit A-Z, a-z, 0-9, _). Se saa olla vähintään 1 ja enintään 24 merkkiä pitkä."
+    $warnChars = !$animalid || $validChars ? '<span>' : '<span class="varoitus">';
+    $warnDupl = !$animalid || $validDupl ? '<span>' : '<span class="varoitus">';
+  	echo("Syötä eläimelle kutsumanimi. Tätä nimeä käytetään erottamaan eläimet tietokannassa,
+       joten$warnDupl se ei saa olla sama kuin jollain toisella olemassaolevalla eläimellä.</span>
+      $warnChars<br>Tämä nimi ei saa sisältää ääkkösiä, välejä tai muita erikoismerkkejä (Sallitut merkit A-Z, a-z, 0-9, _).
+       Se saa olla vähintään 1 ja enintään 24 merkkiä pitkä.</span>"
     );
     echo("
     <form name='edit' method='GET' action='./uusi.php'>
@@ -82,10 +92,10 @@ if($logged) {
     </form>
   	");
 	} else {
-    echo(parseEntry($animalid));
+    
   }
   
-} else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../../'>tästä</a>.");
+} else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../'>tästä</a>.");
 ?>
 
 
