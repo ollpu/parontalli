@@ -48,8 +48,9 @@ include $rel."ohjaus/passphrase.php";
 
 <?php
 
+
 function checkChars($in) {
-  return (strlen($in) >= 1 && strlen($in) <= 24) && !preg_match('/[^a-z|A-Z|0-9|_]/', $in);
+  return preg_match('/[a-z|A-Z|0-9|_]{1,24}/', $in);
 }
 
 function checkDupl($in, $yht) {
