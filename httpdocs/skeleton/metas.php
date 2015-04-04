@@ -1,6 +1,7 @@
 <meta charset="UTF-8">
 <meta name="msvalidate.01" content="0FB9B019DA55297EDC00A30165EA3E85" />
 <meta name=viewport content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ed8f31">
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
