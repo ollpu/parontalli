@@ -66,7 +66,7 @@ Muokkaa sivua
 						<option value="kulta" '. 		$kulta .'>Kullankeltainen</option>
 					</select>
 		<br>
-		Teksti:<br><textarea name="teksti" rows="10" cols="30">&'. htmlspecialchars($eprow['teksti']) .'</textarea>
+		Teksti:<br><textarea name="teksti" rows="10" cols="30">'. htmlspecialchars($eprow['teksti']) .'</textarea>
 		<br>
 		Selitys: (hakukoneille)<br><textarea name="selitys" rows="4" cols="20">'. $eprow['selitys'] .'</textarea>
 		<input type="hidden" name="uid" value="'. $eprow['uid'] .'">
