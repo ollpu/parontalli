@@ -24,12 +24,10 @@ if ($logged == true){
     ."', sukuposti = '". parse($_POST['sukuposti'], $yht)
     ."', text = '". parse($_POST['text'], $yht)
     ."', price = '". parse($_POST['price'], $yht)
-    ."' WHERE id_name = '". $_POST['uid'] ."'"
+    ."' WHERE id_name = '". $_POST['id_name'] ."'"
   ;
-	$result = mysqli_query($yht, $query);
-	echo($result);
-	if($result) {
-		//header( 'Location: ../muokkaa?edit=success' );
+	if(mysqli_query($yht, $query)) {
+		header( 'Location: ../muokkaa?edit=success' );
 	} else {
 		header( 'Location: ../muokkaa?edit=failed' );
 	}

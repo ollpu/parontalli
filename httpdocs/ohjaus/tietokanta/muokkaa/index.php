@@ -60,7 +60,8 @@ if($logged) {
   	<table border='0'>
   		<tr>
   			<td>Nimi: </td>
-        <td><input type='text' name='id_name' value='$animalid' disabled/></td>
+        <td><input type='text' value='$animalid' disabled/></td>
+				<input type='hidden' name='id_name' value='$animalid'>
         <td>&nbsp&nbspEläimen \"kutsumanimi\" (ei koskaan näytetä kävijälle).</td>
   		</tr>
       <tr>
