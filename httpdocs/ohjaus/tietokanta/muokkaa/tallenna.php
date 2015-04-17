@@ -18,18 +18,18 @@ if ($logged == true){
 	mysqli_query($yht, "SET NAMES 'utf8'");
   
 	$query = "UPDATE animals SET "
-    ."nimi = '". parse($_POST['nimi'], $yht)
-    ."', kuva = '". parse($_POST['kuva'], $yht)
-    ."', color = '". parse($_POST['vari'], $yht)
-    ."', teksti = '". parse($_POST['teksti'], $yht)
-    ."', html = '". parse($_POST['html'], $yht)
-    ."', selitys = '". parse($_POST['selitys'], $yht)
-    ."' WHERE uid = '". $_POST['uid'] ."'"
+    ."name = '". parse($_POST['name'], $yht)
+    ."', img = '". parse($_POST['img'], $yht)
+    ."', link = '". parse($_POST['link'], $yht)
+    ."', sukuposti = '". parse($_POST['sukuposti'], $yht)
+    ."', text = '". parse($_POST['text'], $yht)
+    ."', price = '". parse($_POST['price'], $yht)
+    ."' WHERE id_name = '". $_POST['uid'] ."'"
   ;
 	if(mysqli_query($yht, $query)) {
-		header( 'Location: ../paneeli.php?msg=edited' );
+		header( 'Location: ../?edit=success' );
 	} else {
-		header( 'Location: ../paneeli.php?msg=editf' );
+		header( 'Location: ../?edit=failed' );
 	}
 } else { echo "Et ole kirjautunut si&auml;&auml;n. <a href='./'>Yrit&auml; uudellen t&auml;st&auml;.</a>"; }
 
