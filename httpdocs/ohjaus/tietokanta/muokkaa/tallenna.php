@@ -26,10 +26,12 @@ if ($logged == true){
     ."', price = '". parse($_POST['price'], $yht)
     ."' WHERE id_name = '". $_POST['uid'] ."'"
   ;
-	if(mysqli_query($yht, $query)) {
-		header( 'Location: ../?edit=success' );
+	$result = mysqli_query($yht, $query);
+	echo($result);
+	if($result) {
+		//header( 'Location: ../muokkaa?edit=success' );
 	} else {
-		header( 'Location: ../?edit=failed' );
+		header( 'Location: ../muokkaa?edit=failed' );
 	}
 } else { echo "Et ole kirjautunut si&auml;&auml;n. <a href='./'>Yrit&auml; uudellen t&auml;st&auml;.</a>"; }
 
