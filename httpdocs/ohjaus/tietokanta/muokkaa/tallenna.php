@@ -27,9 +27,9 @@ if ($logged == true){
     ."' WHERE id_name = '". $_POST['id_name'] ."'"
   ;
 	if(mysqli_query($yht, $query)) {
-		header( 'Location: ../muokkaa?edit=success' );
+		header( 'Location: ../katsele?id='.$_POST['id_name'].'&edit=success' );
 	} else {
-		header( 'Location: ../muokkaa?edit=failed' );
+		header( 'Location: ../katsele?id='.$_POST['id_name'].'&edit=failed' );
 	}
 } else { echo "Et ole kirjautunut si&auml;&auml;n. <a href='./'>Yrit&auml; uudellen t&auml;st&auml;.</a>"; }
 
