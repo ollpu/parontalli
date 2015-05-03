@@ -36,7 +36,13 @@ $uid = $pagerow["uid"];
 
 
 <?
-echo '<meta name="description" content="'. $selitys .'">';
+echo("
+	<meta name='description' content='$selitys'>
+	<meta name='og:site_name' content='Parontalli.fi'>
+	<meta name='og:title' content='$nimi'>
+	<meta name='og:description' content='$selitys'>
+");
+
 ?>
 <title>
 	<? echo $nimi; ?>
