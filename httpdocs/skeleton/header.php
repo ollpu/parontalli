@@ -21,14 +21,13 @@ function createLink($color, $target, $thispage, $nimi) {
 	';
 }
 
-//TODO!
-//function returnAnimalById($animalid) {
-//
-//}
+function displayAnimalById($yht, $animalid, $displayprice)
+	{ echo( returnAnimalById($yht, $animalid, $displayprice)); }
 
-function displayAnimalById($yht, $animalid, $displayprice) {
+function returnAnimalById($yht, $animalid, $displayprice) {
 	$query = mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '".$animalid."' LIMIT 1");
 	$row = mysqli_fetch_assoc($query);
+	
 	if($row['id_name'] != '') {
 		$imagerows = array();
 		if(trim($row['img']) != '') {
@@ -38,48 +37,51 @@ function displayAnimalById($yht, $animalid, $displayprice) {
 				$images[$key] = explode(',', $imagerow);
 			}
 		}
-		displayAnimal(1, $row['name'], $images, $row['link'], $row['sukuposti'], $row['text'], $row['price'], $displayprice);
+		return returnAnimal(1, $row['name'], $images, $row['link'], $row['sukuposti'], $row['text'], $row['price'], $displayprice);
 	//if not found, display a warning message
-	} else echo("<br><span class='varoitus'>Varoitus!</span> Pyytämääsi eläintä ('$animalid') ei löytynyt tietokannasta!</br>");
+	} else return ("<br><span class='varoitus'>Varoitus!</span> Pyytämääsi eläintä ('$animalid') ei löytynyt tietokannasta!</br>");
 }
 
-function displayAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $displayprice) {
+function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $displayprice) {
+	$toReturn = "";
 	//Title
-	echo("
+	$toReturn .= ("
 	<h2 id='otsikko$id'>$name</h2><br/>
 	");
 	//Images, in rows
 	if(count($images)) foreach($images as $imagerow) {
-		echo("
+		$toReturn .= ("
 		<div class='img img".count($imagerow)."'>
 		");
 		foreach($imagerow as $image) {
-			echo("
+			$toReturn .= ("
 			<img src='$image'> ");
 		}
-		echo("
+		$toReturn .= ("
 		</div><br/>
 		");
 	}
-	echo("
+	$toReturn .= ("
 	");
 	if($links != "") {
-		echo("
+		$toReturn .= ("
 		$links
 		<br/>
 		");
 	}
 	if($sukuposti != "") {
-		echo("<br/><a href='$sukuposti'>Sukuposti</a><br/>
+		$toReturn .= ("<br/><a href='$sukuposti'>Sukuposti</a><br/>
 		");
 	}
-	echo(nl2br($text));
-	echo("
+	$toReturn .= (nl2br($text));
+	$toReturn .= ("
 	<br/><br/>
 	");
 	if($displayprice) {
-		echo(nl2br($price));
+		$toReturn .= (nl2br($price));
 	}
+	
+	return $toReturn;
 	
 }
 
