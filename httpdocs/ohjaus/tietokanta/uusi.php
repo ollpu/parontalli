@@ -50,7 +50,7 @@ include $rel."ohjaus/passphrase.php";
 
 
 function checkChars($in) {
-  return preg_match('/[a-z|A-Z|0-9|_]{1,24}/', $in);
+  return preg_match('/^[a-z|A-Z|0-9|_]{1,24}$/', $in);
 }
 
 function checkDupl($in, $yht) {
@@ -81,7 +81,7 @@ if($logged) {
     		<tr>
     			<td>Nimi: </td>
           <td><input type='text' name='id' value='$animalid'/></td>
-          <td>&nbsp&nbspEläimen \"kutsumanimi\" (ei koskaan näytetä kävijälle).</td>
+          <td>&nbsp&nbspEläimen \"kutsumanimi\" (ei näytetä kävijälle).</td>
     		</tr>
         <tr>
           <td></td>
@@ -93,7 +93,8 @@ if($logged) {
     </form>
   	");
 	} else {
-    
+    $query = mysqli_query($yht, "INSERT INTO animals (id_name) VALUES ($animalid)");
+		header("Location: ./muokkaa?id=$animalid");
   }
   
 } else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../'>tästä</a>.");
