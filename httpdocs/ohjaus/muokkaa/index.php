@@ -71,7 +71,7 @@ Muokkaa sivua
 		Selitys: (hakukoneille)<br><textarea name="selitys" rows="4" cols="20">'. $eprow['selitys'] .'</textarea>
 		<input type="hidden" name="uid" value="'. $eprow['uid'] .'">
 		<br>
-		HTML: (Roope täyttää)<br><textarea name="html" rows="1" cols="10">'. htmlspecialchars($eprow['html']) .'</textarea>
+		HTML: (Roope täyttää)<br><textarea name="html" rows="1" cols="10">'. htmlspecialchars($eprow['predit_html']) .'</textarea>
 		<br>
 		<input type="submit" value="Tallenna">
 		</form>

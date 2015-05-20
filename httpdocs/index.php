@@ -93,7 +93,6 @@ echo $html;
 ?>
 <div class="content"><br>
 	<?
-	$teksti = nl2br($teksti);
 	echo $teksti;
 	?>
 </div>

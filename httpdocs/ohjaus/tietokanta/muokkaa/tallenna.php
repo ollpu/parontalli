@@ -24,6 +24,7 @@ if ($logged == true){
     ."', sukuposti = '". parse($_POST['sukuposti'], $yht)
     ."', text = '". parse($_POST['text'], $yht)
     ."', price = '". parse($_POST['price'], $yht)
+		."', short_name = '". parse($_POST['short_name'], $yht)
     ."' WHERE id_name = '". $_POST['id_name'] ."'"
   ;
 	if(mysqli_query($yht, $query)) {

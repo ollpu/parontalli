@@ -25,7 +25,7 @@ function displayAnimalById($yht, $animalid, $displayprice)
 	{ echo( returnAnimalById($yht, $animalid, $displayprice)); }
 
 function returnAnimalById($yht, $animalid, $displayprice) {
-	$query = mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '".$animalid."' LIMIT 1");
+	$query = mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '$animalid' LIMIT 1");
 	$row = mysqli_fetch_assoc($query);
 	
 	if($row['id_name'] != '') {
@@ -37,7 +37,7 @@ function returnAnimalById($yht, $animalid, $displayprice) {
 				$images[$key] = explode(',', $imagerow);
 			}
 		}
-		return returnAnimal(1, $row['name'], $images, $row['link'], $row['sukuposti'], $row['text'], $row['price'], $displayprice);
+		return returnAnimal($animalid, $row['name'], $images, $row['link'], $row['sukuposti'], $row['text'], $row['price'], $displayprice);
 	//if not found, display a warning message
 	} else return ("<br><span class='varoitus'>Varoitus!</span> Pyytämääsi eläintä ('$animalid') ei löytynyt tietokannasta!</br>");
 }
@@ -46,7 +46,7 @@ function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $d
 	$toReturn = "";
 	//Title
 	$toReturn .= ("
-	<h2 id='otsikko$id'>$name</h2><br/>
+	<h2 id='animal$id'>$name</h2><br/>
 	");
 	//Images, in rows
 	if(count($images)) foreach($images as $imagerow) {

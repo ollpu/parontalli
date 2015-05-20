@@ -64,6 +64,11 @@ if($logged) {
 				<input type='hidden' name='id_name' value='$animalid'>
         <td>&nbsp&nbspEläimen \"kutsumanimi\" (ei koskaan näytetä kävijälle).</td>
   		</tr>
+			<tr>
+  			<td>Lyhyt nimi: </td>
+        <td><input type='text' value='". $row['short_name'] ."' name='short_name'/></td>
+        <td>&nbsp&nbspLyhyt versio eläimen nimestä. Tämä versio ilmestyy sivujen oikeaan navigointipalkkiin. Lyhyempi parempi!</td>
+  		</tr>
       <tr>
         <td>Otsikko: </td>
         <td><input type='text' name='name' value='". htmlspecialchars($row['name']) ."'/></td>

@@ -58,7 +58,7 @@ Tervetuloa!
 			'. $msg .'<br>
 			</p>
 			<div class="paneeli">';
-			$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");
+			$haku = mysqli_query($yht, "SELECT uid, nimi, id FROM sivut ORDER BY id");
 			while ($row = mysqli_fetch_array($haku)){
 				echo '
 				<a class="pane sininen" href="./muokkaa?es='. $row['uid'] .'">

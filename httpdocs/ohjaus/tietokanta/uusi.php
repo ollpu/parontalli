@@ -93,7 +93,7 @@ if($logged) {
     </form>
   	");
 	} else {
-    $query = mysqli_query($yht, "INSERT INTO animals (id_name) VALUES ($animalid)");
+    $query = mysqli_query($yht, "INSERT INTO animals (id_name) VALUES ('$animalid')");
 		header("Location: ./muokkaa?id=$animalid");
   }
   
