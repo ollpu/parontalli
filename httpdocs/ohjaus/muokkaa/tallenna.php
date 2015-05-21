@@ -26,7 +26,6 @@ function parse($input, $con){
 			selitys = '". parse($_POST['selitys'], $yht)
 			."' WHERE uid = '". $_POST['uid'] ."'";
 		
-		$_POST['teksti'] = nl2br($_POST['teksti']);
 		if(mysqli_query($yht, $query)) {
 			generate_and_save_page($yht, $_POST['uid'], $_POST['teksti'], $_POST['html']);
 			header( 'Location: ../paneeli.php?msg=edited' );
