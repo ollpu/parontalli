@@ -124,20 +124,22 @@ function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $d
 	}
 	$toReturn .= ("
 	");
-	if($links != "") {
+	if(trim($links) != "") {
 		$toReturn .= ("
 		$links
 		<br/>
 		");
 	}
-	if($sukuposti != "") {
+	if(trim($sukuposti) != "") {
 		$toReturn .= ("<a href='$sukuposti'>Sukuposti</a><br/>
 		");
 	}
-	$toReturn .= (nl2br($text));
-	$toReturn .= ("
-	<br/><br/>
-	");
+	if(trim($text) != "") {
+		$toReturn .= (nl2br($text));
+		$toReturn .= ("
+		<br/><br/>
+		");
+	}
 	if($displayprice) {
 		$toReturn .= (nl2br($price));
 	}
