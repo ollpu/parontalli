@@ -131,7 +131,7 @@ function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $d
 		");
 	}
 	if($sukuposti != "") {
-		$toReturn .= ("<br/><a href='$sukuposti'>Sukuposti</a><br/>
+		$toReturn .= ("<a href='$sukuposti'>Sukuposti</a><br/>
 		");
 	}
 	$toReturn .= (nl2br($text));
