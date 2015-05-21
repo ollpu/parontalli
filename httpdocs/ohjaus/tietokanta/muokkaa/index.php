@@ -57,17 +57,17 @@ if($logged) {
 	
   echo("
   <form name='edit' method='POST' action='./tallenna.php'>
-  	<table border='0'>
+  	<table class='animalDB_edit'>
   		<tr>
   			<td>Nimi: </td>
         <td><input type='text' value='$animalid' disabled/></td>
 				<input type='hidden' name='id_name' value='$animalid'>
-        <td>&nbsp&nbspEläimen \"kutsumanimi\" (ei koskaan näytetä kävijälle).</td>
+        <td class='desc'>Eläimen \"kutsumanimi\" (ei koskaan näytetä kävijälle).</td>
   		</tr>
 			<tr>
   			<td>Lyhyt nimi: </td>
         <td><input type='text' value='". $row['short_name'] ."' name='short_name'/></td>
-        <td>&nbsp&nbspLyhyt versio eläimen nimestä. Tämä versio ilmestyy sivujen oikeaan navigointipalkkiin. Lyhyempi parempi!</td>
+        <td class='desc'>Lyhyt versio eläimen nimestä. Tämä versio ilmestyy sivujen oikeaan navigointipalkkiin. Lyhyempi parempi!</td>
   		</tr>
       <tr>
         <td>Otsikko: </td>
@@ -76,7 +76,7 @@ if($logged) {
       <tr>
         <td>Kuvat: </td>
         <td><textarea name='img' rows='3' cols='31'>". htmlspecialchars($row['img']) ."</textarea></td>
-        <td>&nbsp&nbspKuvia eläimestä (linkkeinä). Erota kuvat pilkuilla (\",\") ja rivit rivinvaihdoilla. Yhdellä rivillä voi olla enintään 4 kuvaa.</td>
+        <td class='desc'>Kuvia eläimestä (linkkeinä). Erota kuvat pilkuilla (\",\") ja rivit rivinvaihdoilla. Yhdellä rivillä voi olla enintään 4 kuvaa.</td>
       </tr>
       <tr>
         <td>Linkit:</td>
@@ -85,7 +85,7 @@ if($logged) {
       <tr>
         <td>Sukuposti-linkki: </td>
         <td><input type='text' name='sukuposti' value='". htmlspecialchars($row['sukuposti']) ."'/></td>
-        <td>&nbsp&nbspJätä tyhjäksi jos ei ole.</td>
+        <td class='desc'>Jätä tyhjäksi jos ei ole.</td>
       </tr>
       <tr>
         <td>Leipäteksti: </td>
@@ -94,7 +94,7 @@ if($logged) {
       <tr>
         <td>Hinta: </td>
         <td><textarea name='price' rows='2' cols='31'>". htmlspecialchars($row['price']) ."</textarea></td>
-        <td>&nbsp&nbspVoit valita sijoituskohtaisesti, näytetäänkö hintaa vai ei.</td>
+        <td class='desc'>Voit valita sijoituskohtaisesti, näytetäänkö hintaa vai ei.</td>
       </tr>
       <tr>
         <td></td>

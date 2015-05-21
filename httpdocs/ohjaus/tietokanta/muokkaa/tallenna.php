@@ -15,6 +15,8 @@ if ($logged == true){
 	
 	include $rel.'db.php';
 	
+	include "../animaldb_generate.php";
+	
 	mysqli_query($yht, "SET NAMES 'utf8'");
   
 	$query = "UPDATE animals SET "
@@ -28,6 +30,7 @@ if ($logged == true){
     ."' WHERE id_name = '". $_POST['id_name'] ."'"
   ;
 	if(mysqli_query($yht, $query)) {
+		regenerate_all_pages($yht);
 		header( 'Location: ../katsele?id='.$_POST['id_name'].'&edit=success' );
 	} else {
 		header( 'Location: ../katsele?id='.$_POST['id_name'].'&edit=failed' );

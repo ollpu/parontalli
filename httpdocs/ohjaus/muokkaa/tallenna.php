@@ -16,7 +16,6 @@ function parse($input, $con){
 		include "../tietokanta/animaldb_generate.php";
 		
 		mysqli_query($yht, "SET NAMES 'utf8'");
-		$_POST['teksti'] = nl2br($_POST['teksti']);
 		
 		$query = "UPDATE sivut SET
 			nimi = '". parse($_POST['nimi'], $yht) ."',
@@ -26,6 +25,8 @@ function parse($input, $con){
 			predit_html = '". parse($_POST['html'], $yht) ."',
 			selitys = '". parse($_POST['selitys'], $yht)
 			."' WHERE uid = '". $_POST['uid'] ."'";
+		
+		$_POST['teksti'] = nl2br($_POST['teksti']);
 		if(mysqli_query($yht, $query)) {
 			generate_and_save_page($yht, $_POST['uid'], $_POST['teksti'], $_POST['html']);
 			header( 'Location: ../paneeli.php?msg=edited' );

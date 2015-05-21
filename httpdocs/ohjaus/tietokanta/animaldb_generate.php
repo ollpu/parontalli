@@ -1,6 +1,6 @@
 <?php
 
-include "../../skeleton/header.php";
+
 
 //Requires /httpdocs/skeleton/header
 //         (Database connection as $yht)
@@ -11,7 +11,7 @@ function escape($input, $con){
 
 //Use this when animal database entries are changed
 //This function expects that raw text and html haven't changed
-function regenerate_all_pages() {
+function regenerate_all_pages($yht) {
   
   $query = mysqli_query($yht, "SELECT uid, predit_teksti, predit_html FROM sivut");
   while($row = mysqli_fetch_assoc($query)) {
@@ -21,8 +21,7 @@ function regenerate_all_pages() {
 
 
 function generate_and_save_page($yht, $uid, $rawtext, $rawhtml) {
-  $new_values = generate_page($yht, $rawtext, $rawhtml);
-  echo("Newtext='".$new_values['text']."'"."Raw='$rawtext'");
+  $new_values = generate_page($yht, nl2br($rawtext), $rawhtml);
   mysqli_query($yht, "UPDATE sivut SET
     teksti = '".escape($new_values['text'], $yht)."',
     html = '".escape($new_values['html'], $yht)."'
@@ -80,5 +79,70 @@ function generate_page($yht, $rawtext, $rawhtml) {
 function get_short_animalname($yht, $animalid) {
   $query = mysqli_query($yht, "SELECT short_name FROM `animals` WHERE `id_name` = '$animalid' LIMIT 1");
   return mysqli_fetch_assoc($query)['short_name'];
+}
+
+
+function displayAnimalById($yht, $animalid, $displayprice)
+	{ echo( returnAnimalById($yht, $animalid, $displayprice)); }
+
+function returnAnimalById($yht, $animalid, $displayprice) {
+	$query = mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '$animalid' LIMIT 1");
+	$row = mysqli_fetch_assoc($query);
+	
+	if($row['id_name'] != '') {
+		$imagerows = array();
+		if(trim($row['img']) != '') {
+			$imagerows = explode("\n", trim($row['img']));
+			$images = array();
+			foreach($imagerows as $key => $imagerow) {
+				$images[$key] = explode(',', $imagerow);
+			}
+		}
+		return returnAnimal($animalid, $row['name'], $images, nl2br($row['link']), $row['sukuposti'], nl2br($row['text']), $row['price'], $displayprice);
+	//if not found, display a warning message
+	} else return ("<br><span class='varoitus'>Varoitus!</span> Pyytämääsi eläintä ('$animalid') ei löytynyt tietokannasta!</br>");
+}
+
+function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $displayprice) {
+	$toReturn = "";
+	//Title
+	$toReturn .= ("
+	<h2 id='animal$id'>$name</h2><br/>
+	");
+	//Images, in rows
+	if(count($images)) foreach($images as $imagerow) {
+		$toReturn .= ("
+		<div class='img img".count($imagerow)."'>
+		");
+		foreach($imagerow as $image) {
+			$toReturn .= ("
+			<img src='$image'> ");
+		}
+		$toReturn .= ("
+		</div><br/>
+		");
+	}
+	$toReturn .= ("
+	");
+	if($links != "") {
+		$toReturn .= ("
+		$links
+		<br/>
+		");
+	}
+	if($sukuposti != "") {
+		$toReturn .= ("<br/><a href='$sukuposti'>Sukuposti</a><br/>
+		");
+	}
+	$toReturn .= (nl2br($text));
+	$toReturn .= ("
+	<br/><br/>
+	");
+	if($displayprice) {
+		$toReturn .= (nl2br($price));
+	}
+	
+	return $toReturn;
+	
 }
 ?>

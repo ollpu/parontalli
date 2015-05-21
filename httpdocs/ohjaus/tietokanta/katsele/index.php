@@ -50,6 +50,8 @@ include $rel."ohjaus/passphrase.php";
 
 
 if($logged) {
+	include "../animaldb_generate.php";
+	
 	$animalid = $_GET['id'];
 	displayAnimalById($yht, $animalid, true);
 	echo("<br/><br/>

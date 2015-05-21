@@ -297,3 +297,17 @@ span.blog:not(.open)>div.post-content:nth-of-type(5):after {
 }
 
 span.blog>div.post-content:nth-of-type(5):hover:after {opacity:0.8;}
+
+
+//Animal database editing interface
+table.animalDB_edit {
+  border: 0;
+}
+
+table.animalDB_edit input[type^="text"] {
+  width: 100%;
+}
+
+table.animalDB_edit td.desc {
+  padding-left: 1em;
+}
