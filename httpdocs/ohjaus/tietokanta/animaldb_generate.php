@@ -119,7 +119,7 @@ function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $d
 			<img src='$image'> ");
 		}
 		$toReturn .= ("
-		</div><br/>
+		</div><br/><br/>
 		");
 	}
 	$toReturn .= ("
