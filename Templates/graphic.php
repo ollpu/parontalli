@@ -17,9 +17,7 @@ include $rel."db.php";
 	Template
 </title>
 
-<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" class="text/css" href="<? print($rel); ?>main.css">
+<?php include $rel."skeleton/styles.php" ?>
 
 </head>
 
@@ -29,10 +27,10 @@ include $rel."db.php";
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-	<a class="sininen" href="./" id="thispage">
-	&nbsp;Template Site&nbsp;
-	</a>
-	&nbsp;&nbsp;
+	<?php
+		createLink("sininen", "./", "thispage", "Template Site");
+	?>
+
 	<hr class="header">
 </div>
 

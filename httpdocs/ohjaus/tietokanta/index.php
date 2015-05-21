@@ -5,7 +5,7 @@ $rel = "../../";
 
 include $rel."db.php";
 
-include $rel."ohjaus/passphrase.php"
+include $rel."ohjaus/passphrase.php";
 
 
 
@@ -13,40 +13,35 @@ include $rel."ohjaus/passphrase.php"
 <html>
 <head>
 
-<?php include $rel."skeleton/metas.php" ?>
+<?php include $rel."skeleton/metas.php"; ?>
 
 
 <title>
 	Ohjaus - Tietokanta
 </title>
 
-<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" class="text/css" href="<? print($rel); ?>main.css">
+<?php include $rel."skeleton/styles.php"; ?>
 
 </head>
 
 
 <body>
 
-<?php include $rel."skeleton/header.php" ?>
+<?php include $rel."skeleton/header.php"; ?>
 
 <div class="nav">
-	<a class="sininen" href="../" id="">
-	&nbsp;Takaisin&nbsp;
-	</a>
-	&nbsp;&nbsp;
-	<a class="vihrea" href="./" id="thispage">
-	&nbsp;Tietokanta&nbsp;
-	</a>
-	&nbsp;&nbsp;
+	<?php
+		createLink("sininen", "../", 	"", 				"Takaisin"	);
+		createLink("vihrea", 	"./", 	"thispage", "Tietokanta");
+	?>
+
 	<hr class="header">
 </div>
 
 
 
 
-<div class="content"><br>
+<div class="content">
 
 <h2>
 Eläinten tietokanta
@@ -54,17 +49,22 @@ Eläinten tietokanta
 
 <div class="paneeli mini">
 <?php
-if($logged) {
-	$query = mysqli_query($yht, "SELECT * FROM animals");
-	while($row = mysqli_fetch_array($query)) {
-		echo('
-		<a class="pane vihrea">
+function createPane($class, $href, $text) {
+	echo('
+		<a class="pane '.$class.'" href="'.$href.'">
 		<span class="inpane">
-		Katsele kohdetta '.$row['id_name'].'
+		'. $text .'
 		</span>
 		</a>
-		');
+	');
+}
+
+if($logged) {
+	$query = mysqli_query($yht, "SELECT id_name, short_name FROM animals");
+	while($row = mysqli_fetch_array($query)) {
+		createPane("sininen", "./katsele/?id=".$row['id_name'], $row['short_name']);
 	}
+	createPane("vihrea", "./uusi.php", "Luo uusi kohta tietokantaan");
 } else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../'>tästä</a>.");
 ?>
 </div>

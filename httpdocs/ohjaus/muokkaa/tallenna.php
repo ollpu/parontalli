@@ -3,6 +3,7 @@
 
 
 include "../passphrase.php";
+include "../../db.php";
 
 
 function parse($input, $con){
@@ -11,12 +12,23 @@ function parse($input, $con){
 
 	if ($logged == true){
 		
-		include "../../db.php";
+		
+		include "../tietokanta/animaldb_generate.php";
 		
 		mysqli_query($yht, "SET NAMES 'utf8'");
 		
-		$query = "UPDATE sivut SET nimi = '". parse($_POST['nimi'], $yht) ."', kuva = '". parse($_POST['kuva'], $yht) ."', color = '". parse($_POST['vari'], $yht) ."', teksti = '". parse($_POST['teksti'], $yht) ."', html = '". parse($_POST['html'], $yht) ."', selitys = '". parse($_POST['selitys'], $yht) ."' WHERE uid = '". $_POST['uid'] ."'";
+		$query = "UPDATE sivut SET
+			nimi = '". parse($_POST['nimi'], $yht) ."',
+			kuva = '". parse($_POST['kuva'], $yht) ."',
+			color = '". parse($_POST['vari'], $yht) ."',
+			predit_teksti = '". parse($_POST['teksti'], $yht) ."',
+			predit_html = '". parse($_POST['html'], $yht) ."',
+			selitys = '". parse($_POST['selitys'], $yht)
+			."' WHERE uid = '". $_POST['uid'] ."'";
+		
+		$_POST['teksti'] = nl2br($_POST['teksti']);
 		if(mysqli_query($yht, $query)) {
+			generate_and_save_page($yht, $_POST['uid'], $_POST['teksti'], $_POST['html']);
 			header( 'Location: ../paneeli.php?msg=edited' );
 		} else {
 			header( 'Location: ../paneeli.php?msg=editf' );

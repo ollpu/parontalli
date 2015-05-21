@@ -20,9 +20,7 @@ if ($logged){
 	Ohjaus
 </title>
 
-	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" class="text/css" href="<? print($rel); ?>main.css">
+<?php include $rel."skeleton/styles.php" ?>
 
 </head>
 
@@ -30,13 +28,11 @@ if ($logged){
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-	<a class="sininen" href="../" id="">
-		&nbsp;Takaisin&nbsp;
-	</a>
-	&nbsp;&nbsp;
-	<a class="punainen" href="./" id="thispage">
-		&nbsp;Ohjaus&nbsp;
-	</a>
+	<?php
+		createLink("sininen", 	"../", 	"", 				"Takaisin");
+		createLink("punainen", 	"./", 	"thispage", "Ohjaus"	);
+	?>
+
 	<hr class="header" id="">
 </div>
 
@@ -45,12 +41,12 @@ if ($logged){
 Kirjautuminen
 	</h2>
 	<p class="content">
-Ole hyv&auml; ja sy&ouml;t&auml; salainen kirjautumisavaimesi.
+Ole hyvä ja syotä salainen kirjautumisavaimesi.
 	</p>
 	<form name="login" action="login.php" method="post">
 		Avain: <input type="password" name="pwd"><br/>
 		<input type="submit" value="Kirjaudu">
-</form> 
+</form>
 </div>
 <?php include $rel."skeleton/footer.php" ?>
 </body>

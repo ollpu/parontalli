@@ -14,9 +14,7 @@
 	Videoita: Paron Princess Nova
 </title>
 
-	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" class="text/css" href="../main.css">
+<?php include $rel."skeleton/styles.php" ?>
 
 </head>
 
@@ -25,14 +23,11 @@
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-		<a class="punainen" href="../?s=9369#otsikko7" id="">
-		&nbsp;Takaisin&nbsp;
-		</a>
-		&nbsp;&nbsp;
-		<a class="s_sininen" href="" id="thispage">
-		&nbsp;Videoita: Paron Princess Nova&nbsp;
-		</a>
-		&nbsp;&nbsp;
+		<?php
+			createLink("punainen", 	"../?s=9369#otsikko7", 	"", 				"Takaisin"											);
+			createLink("s_sininen", "./", 									"thispage", "Videoita: Paron Princess Nova"	);
+		?>
+
 	<hr class="header" id="">
 </div>
 <div class="content"><br>

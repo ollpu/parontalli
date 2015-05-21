@@ -1,0 +1,75 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+animalid	httpdocs/ohjaus/tietokanta/katsele/index.php	/^	$animalid = $_GET['id'];$/;"	v
+atmpt	httpdocs/ohjaus/admintools/createuid.php	/^		$atmpt = substr(str_shuffle(MD5(microtime())), 0, 4);$/;"	v
+atmpt	httpdocs/ohjaus/luosivu.php	/^		$atmpt = substr(str_shuffle(MD5(microtime())), 0, 4);$/;"	v
+available	httpdocs/ohjaus/admintools/createuid.php	/^			$available = true;$/;"	v
+changeOrder	httpdocs/ohjaus/jarjestys/index.php	/^		function changeOrder(curVal, oriVal) {$/;"	f
+createLink	httpdocs/skeleton/header.php	/^function createLink($color, $target, $thispage, $nimi) {$/;"	f
+createPane	httpdocs/ohjaus/tietokanta/index.php	/^function createPane($class, $href, $text) {$/;"	f
+create_uid	httpdocs/ohjaus/admintools/createuid.php	/^function create_uid($con){$/;"	f
+create_uid	httpdocs/ohjaus/luosivu.php	/^function create_uid($con){$/;"	f
+displayAnimal	httpdocs/skeleton/header.php	/^function displayAnimal($id, $name, $images, $links, $sukuposti, $text, $price) {$/;"	f
+displayAnimalById	httpdocs/skeleton/header.php	/^function displayAnimalById($yht, $animalid, $displayprice) {$/;"	f
+eprow	httpdocs/ohjaus/muokkaa/index.php	/^		$eprow = mysqli_fetch_assoc($haku_ep);$/;"	v
+execRnav	httpdocs/index.php	/^function execRnav()$/;"	f
+fprow	httpdocs/index.php	/^$fprow = mysqli_fetch_assoc($haku_fp);$/;"	v
+haku	httpdocs/index.php	/^	$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");$/;"	v
+haku	httpdocs/ohjaus/jarjestys/index.php	/^		$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");$/;"	v
+haku	httpdocs/ohjaus/jarjestys/save.php	/^		$haku = mysqli_query($yht, "SELECT * FROM sivut");$/;"	v
+haku	httpdocs/ohjaus/paneeli.php	/^			$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");$/;"	v
+haku	httpdocs/sitemap/index.php	/^$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");$/;"	v
+haku_ep	httpdocs/ohjaus/muokkaa/index.php	/^		$haku_ep = mysqli_query($yht, "SELECT * FROM sivut WHERE uid = '". $_GET['es'] ."'");$/;"	v
+haku_fp	httpdocs/index.php	/^$haku_fp = mysqli_query($yht, "SELECT * FROM `sivut` LIMIT 1");$/;"	v
+haku_s	httpdocs/index.php	/^$haku_s = mysqli_query($yht, "SELECT * FROM `sivut` WHERE uid = '".$_GET['s']."' LIMIT 1");$/;"	v
+haku_uid	httpdocs/ohjaus/admintools/createuid.php	/^		$haku_uid = mysqli_query($con, "SELECT * FROM sivut WHERE uid='". $atmpt ."'");$/;"	v
+haku_uid	httpdocs/ohjaus/luosivu.php	/^		$haku_uid = mysqli_query($con, "SELECT * FROM sivut WHERE uid='". $atmpt ."'");$/;"	v
+hash	httpdocs/ohjaus/login.php	/^	$hash = md5($_POST["pwd"]);$/;"	v
+html	httpdocs/index.php	/^$html = $pagerow["html"];$/;"	v
+imagerows	httpdocs/skeleton/header.php	/^	$imagerows = explode(';', $row['img']);$/;"	v
+images	httpdocs/skeleton/header.php	/^	$images = array();$/;"	v
+key	httpdocs/ohjaus/admintools/createuid.php	/^$key = md5("avain1234");$/;"	v
+key	httpdocs/ohjaus/passphrase.php	/^	$key = md5(trim(file_get_contents(dirname(__FILE__) . "\/passphrase.nogit")));$/;"	v
+kuva	httpdocs/index.php	/^$kuva = $pagerow["kuva"];$/;"	v
+logged	httpdocs/ohjaus/admintools/createuid.php	/^		$logged = true;$/;"	v
+logged	httpdocs/ohjaus/passphrase.php	/^	$logged = $pwd == $key;$/;"	v
+nimi	httpdocs/index.php	/^$nimi = $pagerow["nimi"];$/;"	v
+ordnum	httpdocs/ohjaus/jarjestys/index.php	/^		$ordnum = 0;$/;"	v
+pagerow	httpdocs/index.php	/^$pagerow = mysqli_fetch_assoc($haku_s);$/;"	v
+parse	httpdocs/ohjaus/luosivu.php	/^function parse($input, $con){$/;"	f
+parse	httpdocs/ohjaus/muokkaa/tallenna.php	/^function parse($input, $con){$/;"	f
+pwd	httpdocs/ohjaus/admintools/createuid.php	/^$pwd = $_COOKIE["pwd"];$/;"	v
+pwd	httpdocs/ohjaus/passphrase.php	/^	$pwd = $_SESSION["pwd"];$/;"	v
+query	httpdocs/ohjaus/jarjestys/save.php	/^			$query = "UPDATE sivut SET id = '".$_POST[$row['id']]."' WHERE id = ". $row['id'];$/;"	v
+query	httpdocs/ohjaus/luosivu.php	/^	$query = "INSERT INTO sivut (uid) VALUES ('". $uid ."')";$/;"	v
+query	httpdocs/ohjaus/muokkaa/poista.php	/^		$query = "DELETE FROM sivut WHERE uid = '". $_GET['uid']."'";$/;"	v
+query	httpdocs/ohjaus/muokkaa/tallenna.php	/^		$query = "UPDATE sivut SET nimi = '". parse($_POST['nimi'], $yht) ."', kuva = '". parse($_POST['kuva'], $yht) ."', color = '". parse($_POST['vari'], $yht) ."', teksti = '". parse($_POST['teksti'], $yht) ."', html = '". parse($_POST['html'], $yht) ."', selitys = '". parse($_POST['selitys'], $yht) ."' WHERE uid = '". $_POST['uid'] ."'";$/;"	v
+query	httpdocs/ohjaus/tietokanta/index.php	/^	$query = mysqli_query($yht, "SELECT * FROM animals");$/;"	v
+query	httpdocs/skeleton/header.php	/^	$query = mysqli_query($yht, "SELECT * FROM `animals` WHERE id_name = '".$animalid."' LIMIT 1");$/;"	v
+rel	Templates/graphic.php	/^$rel = ".\/";$/;"	v
+rel	Templates/graphic_admin.php	/^$rel = ".\/";$/;"	v
+rel	httpdocs/index.php	/^$rel = ".\/";$/;"	v
+rel	httpdocs/ohjaus/index.php	/^$rel = "..\/";$/;"	v
+rel	httpdocs/ohjaus/jarjestys/index.php	/^$rel = "..\/..\/";$/;"	v
+rel	httpdocs/ohjaus/jarjestys/save.php	/^$rel = "..\/..\/";$/;"	v
+rel	httpdocs/ohjaus/muokkaa/index.php	/^$rel = "..\/..\/";$/;"	v
+rel	httpdocs/ohjaus/paneeli.php	/^$rel = "..\/";$/;"	v
+rel	httpdocs/ohjaus/tietokanta/index.php	/^$rel = "..\/..\/";$/;"	v
+rel	httpdocs/ohjaus/tietokanta/katsele/index.php	/^$rel = "..\/..\/..\/";$/;"	v
+rel	httpdocs/sitemap/index.php	/^$rel = "..\/";$/;"	v
+row	httpdocs/skeleton/header.php	/^	$row = mysqli_fetch_assoc($query);$/;"	v
+runHandles	httpdocs/index.php	/^function runHandles()$/;"	f
+selitys	httpdocs/index.php	/^$selitys = $pagerow["selitys"];$/;"	v
+teksti	httpdocs/index.php	/^	$teksti = nl2br($teksti);$/;"	v
+teksti	httpdocs/index.php	/^$teksti = $pagerow["teksti"];$/;"	v
+thispage	httpdocs/index.php	/^			$thispage = "thispage";$/;"	v
+thispage	httpdocs/index.php	/^		$thispage = "";$/;"	v
+uid	httpdocs/index.php	/^$uid = $pagerow["uid"];$/;"	v
+uid	httpdocs/ohjaus/luosivu.php	/^	$uid = create_uid($yht);$/;"	v
+unique	httpdocs/ohjaus/jarjestys/save.php	/^	$unique = array_unique($_POST, SORT_NUMERIC);$/;"	v
+yht	httpdocs/db.php	/^	$yht = mysqli_connect("localhost","kavija",trim(file_get_contents(dirname(__FILE__) . "\/dbpassword.nogit")),"sivusto");$/;"	v
+yht	httpdocs/ohjaus/admintools/createuid.php	/^$yht = mysqli_connect("mysql.hostinger.fi","u611502351_ojala","Paalihevoset01","u611502351_ojala");$/;"	v

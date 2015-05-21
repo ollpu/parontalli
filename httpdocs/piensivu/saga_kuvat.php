@@ -12,9 +12,7 @@
 	Kuvia: Saga
 </title>
 
-	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" class="text/css" href="../main.css">
+<?php include $rel."skeleton/styles.php" ?>
 
 </head>
 
@@ -23,20 +21,17 @@
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
-		<a class="punainen" href="../?s=5db6#otsikko1" id="">
-		&nbsp;Takaisin&nbsp;
-		</a>
-		&nbsp;&nbsp;
-		<a class="s_sininen" href="" id="thispage">
-		&nbsp;Kuvia: Saga&nbsp;
-		</a>
-		&nbsp;&nbsp;
+		<?php
+			createLink("punainen", 	"../?s=5db6#otsikko1", 	"", 				"Takaisin"		);
+			createLink("s_sininen", "./", 									"thispage", "Kuvia: Saga"	);
+		?>
+		
 	<hr class="header" id="">
 </div>
 <div class="content"><br>
 	<h2>Kouluratsastuskuvia</h2><br>
 	<div class="img2"><img class="content" src="http://s25.postimg.org/e25991kzz/Kouluratsastus1.jpg"> <img class="content" src="http://s25.postimg.org/q2qp9rsen/Kouluratsastus2.jpg"></div><br>
-	
+
 	<h2>Maastoestekuvia</h2><br>
 	<div class="img3"><img class="content" src="http://s25.postimg.org/tvet38xan/Maastoeste_R1_I3.jpg"> <img class="content" src="http://s25.postimg.org/jk2gal5lb/Maastoeste_R1_I1.jpg"> <img class="content" src="http://s25.postimg.org/tjxcqhgun/Maastoeste_R2_I3.jpg"></div><br>
 	<div class="img3"><img class="content" src="http://s25.postimg.org/nzkvfuhzj/Maastoeste_R1_I2.jpg"> <img class="content" src="http://s25.postimg.org/vea7883v3/Maastoeste_R2_I1.jpg"> <img class="content" src="http://s25.postimg.org/nk9lmtw27/Maastoeste_R2_I2.jpg"></div><br>

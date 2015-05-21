@@ -13,11 +13,14 @@ Näillä sivuilla kokeillaan kehitystyön alla olevia toimintoja, joten jotkin t
 </div>
 <?php
 
-function createLink($color, $uid, $thispage, $nimi) {
-	echo '<a class="'. $color .'" href="?s='. $uid .'" id="'. $thispage .'">
+function createLink($color, $target, $thispage, $nimi) {
+	echo '<a class="'. $color .'" href="'. $target .'" id="'. $thispage .'">
 	&nbsp;'. $nimi .'&nbsp;
 	</a>
-	&nbsp;&nbsp;';
+	&nbsp;&nbsp;
+	';
 }
+
+
 
 ?>

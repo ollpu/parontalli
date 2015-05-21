@@ -15,7 +15,7 @@ $fprow = mysqli_fetch_assoc($haku_fp);
 if(!isset($_GET["s"]))	{$_GET['s'] = $fprow['uid'];}
 
 
-$haku_s = mysqli_query($yht, "SELECT * FROM `sivut` WHERE uid = '". $_GET['s'] . "'");
+$haku_s = mysqli_query($yht, "SELECT * FROM `sivut` WHERE uid = '".$_GET['s']."' LIMIT 1");
 
 
 $pagerow = mysqli_fetch_assoc($haku_s);
@@ -48,9 +48,7 @@ echo("
 	<? echo $nimi; ?>
 </title>
 
-	<link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" class="text/css" href="<? print($rel); ?>main.css">
+<?php include $rel."skeleton/styles.php" ?>
 
 </head>
 
@@ -77,9 +75,10 @@ function runHandles()
 		if ($row['uid'] == $uid){
 			$thispage = "thispage";
 		}
-		createLink($row['color'], $row['uid'], $thispage, $row['nimi']);
+		createLink($row['color'], "?s=".$row['uid'], $thispage, $row['nimi']);
 	}
 	?>
+
 	<hr class="header" id="">
 </div>
 <?
@@ -94,7 +93,6 @@ echo $html;
 ?>
 <div class="content"><br>
 	<?
-	$teksti = nl2br($teksti);
 	echo $teksti;
 	?>
 </div>
