@@ -62,7 +62,7 @@ if($logged) {
   			<td>Nimi: </td>
         <td><input type='text' value='$animalid' disabled/></td>
 				<input type='hidden' name='id_name' value='$animalid'>
-        <td class='desc'>Eläimen \"kutsumanimi\" (ei koskaan näytetä kävijälle).</td>
+        <td class='desc'>Eläimen \"kutsumanimi\" (ei näytetä kävijälle).</td>
   		</tr>
 			<tr>
   			<td>Lyhyt nimi: </td>
@@ -75,12 +75,12 @@ if($logged) {
       </tr>
       <tr>
         <td>Kuvat: </td>
-        <td><textarea name='img' rows='3' cols='31'>". htmlspecialchars($row['img']) ."</textarea></td>
+        <td><textarea name='img' rows='3' cols='34'>". htmlspecialchars($row['img']) ."</textarea></td>
         <td class='desc'>Kuvia eläimestä (linkkeinä). Erota kuvat pilkuilla (\",\") ja rivit rivinvaihdoilla. Yhdellä rivillä voi olla enintään 4 kuvaa.</td>
       </tr>
       <tr>
         <td>Linkit:</td>
-        <td><textarea name='link' rows='2' cols='31'>". htmlspecialchars($row['link']) ."</textarea></td>
+        <td><textarea name='link' rows='2' cols='34'>". htmlspecialchars($row['link']) ."</textarea></td>
       </tr>
       <tr>
         <td>Sukuposti-linkki: </td>
@@ -89,11 +89,11 @@ if($logged) {
       </tr>
       <tr>
         <td>Leipäteksti: </td>
-        <td><textarea name='text' rows='10' cols='31'>". htmlspecialchars($row['text']) ."</textarea></td>
+        <td><textarea name='text' rows='10' cols='34'>". htmlspecialchars($row['text']) ."</textarea></td>
       </tr>
       <tr>
         <td>Hinta: </td>
-        <td><textarea name='price' rows='2' cols='31'>". htmlspecialchars($row['price']) ."</textarea></td>
+        <td><textarea name='price' rows='2' cols='34'>". htmlspecialchars($row['price']) ."</textarea></td>
         <td class='desc'>Voit valita sijoituskohtaisesti, näytetäänkö hintaa vai ei.</td>
       </tr>
       <tr>
@@ -106,6 +106,17 @@ if($logged) {
           '>
         </td>
       </tr>
+			<tr>
+				<td></td>
+				<td style='text-align: center; '>
+					<input type='submit' name='express_save' value='Tallenna luomatta sivuja uudelleen'>
+				</td>
+				<td class='desc'>
+					Jos muokkaat paljon eläimiä kerralla, on suositeltavaa käyttää tätä vaihtoehtoa.
+					Tätä käyttämällä säästät hieman palvelimen suoritustehoa, sillä jokaista sivua ei jouduta luomaan uudelleen.
+					Muista kuitenkin käyttää normaalia tallenusta viimeiseksi, että sivut päivittyvät.
+				</td>
+			</tr>
   	</table>
   </form>
 	");

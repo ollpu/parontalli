@@ -119,7 +119,7 @@ function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $d
 			<img src='$image'> ");
 		}
 		$toReturn .= ("
-		</div><br/><br/>
+		</div><br/>
 		");
 	}
 	$toReturn .= ("
@@ -127,7 +127,7 @@ function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $d
 	if(trim($links) != "") {
 		$toReturn .= ("
 		$links
-		<br/>
+		<br/></br>
 		");
 	}
 	if(trim($sukuposti) != "") {
@@ -135,15 +135,15 @@ function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $d
 		");
 	}
 	if(trim($text) != "") {
-		$toReturn .= (nl2br($text));
+		$toReturn .= $text;
+	}
+	if($displayprice) {
 		$toReturn .= ("
 		<br/><br/>
 		");
-	}
-	if($displayprice) {
 		$toReturn .= (nl2br($price));
 	}
-	
+	$toReturn .= "<br/>";
 	return $toReturn;
 	
 }
