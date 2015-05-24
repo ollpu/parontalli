@@ -121,15 +121,16 @@ function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $d
 		$toReturn .= ("
 		</div><br/>
 		");
-	}
+	} else { $noImgs = true; }
 	$toReturn .= ("
 	");
 	if(trim($links) != "") {
 		$toReturn .= ("
 		$links
-		<br/></br>
+		<br/><br/>
 		");
-	}
+	} elseif (!$noImgs) { $toReturn .= "<br/>"; }
+	
 	if(trim($sukuposti) != "") {
 		$toReturn .= ("<a href='$sukuposti'>Sukuposti</a><br/>
 		");
