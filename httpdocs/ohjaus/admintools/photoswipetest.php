@@ -67,17 +67,36 @@ include $rel."db.php";
     
   ?>
   
-  <div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+  <div class="img-gallery img" itemscope itemtype="http://schema.org/ImageGallery">
 
     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-      <a href="http://i.imgur.com/Uk36p9o.jpg" itemprop="contentUrl" data-size="<? echo(getDimensions('http://i.imgur.com/Uk36p9o.jpg')); ?>">
+      <a href="http://i.imgur.com/Uk36p9oh.jpg" itemprop="contentUrl" data-size="<? echo(getDimensions('http://i.imgur.com/Uk36p9oh.jpg')); ?>">
+        <img src="http://i.imgur.com/Uk36p9om.jpg" itemprop="thumbnail" alt="Image description" />
+      </a>
+      <figcaption itemprop="caption description">Kuva 1.</figcaption>
+      <br/>
+    </figure>
+    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+      <a href="http://i.imgur.com/a3ESsFPh.jpg" itemprop="contentUrl" data-size="<? echo(getDimensions('http://i.imgur.com/a3ESsFPh.jpg')); ?>">
+        <img src="http://i.imgur.com/a3ESsFPm.jpg" itemprop="thumbnail" alt="Image description" />
+      </a>
+      <figcaption itemprop="caption description">Kuva 2.</figcaption>
+    </figure>
+
+
+  </div>
+  
+  <div class="img-gallery img" itemscope itemtype="http://schema.org/ImageGallery">
+
+    <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+      <a href="http://i.imgur.com/Uk36p9oh.jpg" itemprop="contentUrl" data-size="<? echo(getDimensions('http://i.imgur.com/Uk36p9oh.jpg')); ?>">
         <img src="http://i.imgur.com/Uk36p9om.jpg" itemprop="thumbnail" alt="Image description" />
       </a>
       <figcaption itemprop="caption description">Kuva 1.</figcaption>
     </figure>
 
     <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-      <a href="http://i.imgur.com/a3ESsFP.jpg" itemprop="contentUrl" data-size="<? echo(getDimensions('http://i.imgur.com/a3ESsFP.jpg')); ?>">
+      <a href="http://i.imgur.com/a3ESsFPh.jpg" itemprop="contentUrl" data-size="<? echo(getDimensions('http://i.imgur.com/a3ESsFPh.jpg')); ?>">
         <img src="http://i.imgur.com/a3ESsFPm.jpg" itemprop="thumbnail" alt="Image description" />
       </a>
       <figcaption itemprop="caption description">Kuva 2.</figcaption>

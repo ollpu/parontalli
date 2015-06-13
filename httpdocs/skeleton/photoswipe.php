@@ -84,8 +84,13 @@
 
         figureEl = thumbElements[i]; // <figure> element
 
-        // include only element nodes
+        // include only element nodes, exclude <br>
         if(figureEl.nodeType !== 1) {
+          continue;
+        }
+        if(figureEl.tagName.toLowerCase() === 'br') {
+          numNodes -= 1;
+          i--;
           continue;
         }
 
@@ -272,7 +277,7 @@
 
   // execute above function
   document.addEventListener('DOMContentLoaded', function() {
-    initPhotoSwipeFromDOM('.my-gallery');
+    initPhotoSwipeFromDOM('.img-gallery');
   }, false);
 
 
