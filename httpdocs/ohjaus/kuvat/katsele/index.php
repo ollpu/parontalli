@@ -52,10 +52,10 @@ include "{$rel}ohjaus/passphrase.php";
     foreach ($images as $picture) {
       $toReturn .= "<figure itemprop='associatedMedia' itemscope itemtype='http://schema.org/ImageObject'>
         <a href='".$picture['img-large']."' itemprop='contentUrl' data-size='".$picture['img-size']."'>
-          <img src='".$picture['img-thumb']."' itemprop='thumbnail' alt='Image description' />
+          <img src='".$picture['img-thumb']."' itemprop='thumbnail' alt='".$picture['text']."' />
         </a>
         <figcaption itemprop='caption description'>".$picture['text'];
-        if($picture['author'] != "") $toReturn .= "<br/><small>Kuvannut: ".$picture['author']."</small>";
+        if($picture['author'] != "") $toReturn .= "<br/><small>Kuva: ".$picture['author']."</small>";
         $toReturn .= "</figcaption>
         ";
       if($picture['break-row']) $toReturn .= "<br/>";

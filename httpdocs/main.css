@@ -113,6 +113,9 @@ div.img img {
   width:100%;
   margin-left:0%;
   box-shadow:0px 0px 5px #555;
+  
+  height: 5%;
+  width: auto;
 }
 
 div.img {
@@ -133,10 +136,6 @@ div.img figure a {
 
 div.img figure figcaption {
   display: none;
-}
-div.img img {
-  height: 12rem;
-  width: auto;
 }
 
 /*div.img img:first-of-type { border-top-left-radius:2em;     }

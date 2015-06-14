@@ -77,6 +77,10 @@ Tervetuloa!
 			<a class="pane punainen" href="./tietokanta/">
 			<span class="inpane">Muokkaa eläintietokantaa</span>
 			</a>';
+			echo '
+			<a class="pane keltainen" href="./kuvat/">
+			<span class="inpane">Muokkaa kuvatietokantaa</span>
+			</a>';
 			echo '</div>';
 		}else echo "Väärä sala-avain. <a href='./'>Yritä uudellen tästä.</a>";
 	?>
