@@ -26,13 +26,13 @@
 
         <div class="pswp__counter"></div>
 
-        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--close" title="Sulje (Esc)"></button>
 
-        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--share" title="Jaa"></button>
 
-        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--fs" title="Vaihda koko näytön tilaa"></button>
 
-        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoomaa sisään/ulos"></button>
 
         <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
         <!-- element will get class pswp__preloader--active when preloader is running -->
@@ -212,7 +212,12 @@
 
       // define options (if needed)
       options = {
-
+        shareButtons: [
+          {id:'facebook', label:'Jaa Facebookissa', url:'https://www.facebook.com/sharer/sharer.php?u={{url}}'},
+          {id:'twitter', label:'Twiittaa', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'},
+          {id:'download', label:'Lataa kuva', url:'{{raw_image_url}}', download:true}
+        ],
+        
         // define gallery index (for URL)
         galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 

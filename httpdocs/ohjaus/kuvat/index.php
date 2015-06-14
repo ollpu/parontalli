@@ -41,7 +41,7 @@
 <div class="content">
 
 <h2>
-Eläinten tietokanta
+Kuvatietokanta
 </h2><br/>
 
 <div class="paneeli img-panel">

@@ -45,24 +45,7 @@ include "{$rel}ohjaus/passphrase.php";
 
 <br/>
 <?php
-  //TODO: Move these functions
-  function ranger($url){
-    $headers = array("Range: bytes=0-32768");
-    $curl = curl_init($url);
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-    $data = curl_exec($curl);
-    curl_close($curl);
-    return $data;
-  }
-  function getDimensions($url) {
-    $raw = ranger($url);
-    $im = imagecreatefromstring($raw);
-    $width = imagesx($im);
-    $height = imagesy($im);
-    return "{$width}x{$height}";
-  }
-  
+  //TODO: Move this function
   function image_gallery($images = array()) {
     $toReturn = "
       <div class='img-gallery img' itemscope itemtype='http://schema.org/ImageGallery'>";
@@ -71,9 +54,9 @@ include "{$rel}ohjaus/passphrase.php";
         <a href='".$picture['img-large']."' itemprop='contentUrl' data-size='".$picture['img-size']."'>
           <img src='".$picture['img-thumb']."' itemprop='thumbnail' alt='Image description' />
         </a>
-        <figcaption itemprop='caption description'>".$picture['text']."
-          <br/><small>Kuvannut: ".$picture['author']."</small>
-        </figcaption>
+        <figcaption itemprop='caption description'>".$picture['text'];
+        if($picture['author'] != "") $toReturn .= "<br/><small>Kuvannut: ".$picture['author']."</small>";
+        $toReturn .= "</figcaption>
         ";
       if($picture['break-row']) $toReturn .= "<br/>";
       $toReturn .= "</figure>";
@@ -91,34 +74,43 @@ include "{$rel}ohjaus/passphrase.php";
   echo(image_gallery(array($picture)));
   
 	echo("<br/><br/>
-	<table border='0'>
+	<table class='animalDB_edit'>
 		<tr>
-			
+      <td></td>
 			<td>
-				<form name='muokkaa' action='../muokkaa/' method='GET'>
-					<input type='hidden' name='id' value='$animalid'/>
-					<input type='submit' value='Muokkaa' />
+				<form name='copycode' method='GET' onsubmit='window.prompt(\"Kopioi alla oleva sijoituskoodi manuaalisesti\", \"<!--$picid-->\");'>
+					<input type='hidden' name='id' value='$picid'/>
+					<input type='submit' value='Kopio sijoituskoodi'>
 				</form>
 			</td>
-			
-			<td>
-				<form name='copycode' method='GET' onsubmit='window.prompt(\"Kopioi alla oleva sijoituskoodi manuaalisesti\", \"<!--$animalid&true-->\");'>
-					<input type='hidden' name='id' value='$animalid'/>
-					<input type='submit' value='Kopio sijoituskoodi, näytä hinta'>
-				</form>
-			</td>
-			
-			<td>
-				<form name='copycode' method='GET' onsubmit='window.prompt(\"Kopioi alla oleva sijoituskoodi manuaalisesti\", \"<!--$animalid&false-->\");'>
-					<input type='hidden' name='id' value='$animalid'/>
-					<input type='submit' value='Kopio sijoituskoodi, älä näytä hintaa'>
-				</form>
-			</td>
-			
-			
-	</table>
+		</tr>
 	");
-	
+  ?>
+    <form name='edit' method='POST' action='./tallenna.php'>
+      <input type='hidden' name='imgur-uid' value='<?echo($picid);?>' />
+      <tr>
+        <td>Otsikko/Teksti: </td>
+        <td><textarea name='text' rows='3' cols='34'><?echo(htmlspecialchars($picture['text']));?></textarea></td>
+        <td class='desc'>Näytetään kuvan alapuolella.</td>
+      </tr>
+      <tr>
+        <td>Kuvaaja: </td>
+        <td><input type='text' name='author' value='<?echo(htmlspecialchars($picture['author']))?>'/></td>
+        <td class='desc'>Voi sisältää myös esimerkiksi kuvauspäivämäärän.</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type='submit' name='save' value='Tallenna'>
+          <input type='button' value='Poista'
+            onClick='if(confirm("Haluatko varmasti poistaa tämän kuvan? Tätä ei voi peruuttaa! Sijoituskoodit jätetään sivuille."))
+              window.location.href = "poista.php?id=<?echo($picid);?>";
+          '>
+        </td>
+      </tr>
+    </form>
+  </table>
+  <?php
 } else echo("Et ole kirjautunut sisään! Yritä uudelleen <a href='../../'>tästä</a>.");
 ?>
 
