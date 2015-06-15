@@ -44,29 +44,29 @@ include "{$rel}ohjaus/passphrase.php";
 <div class="content"><br>
 
 <br/>
-<?php
-  //TODO: Move this function
-  function image_gallery($images = array()) {
-    $toReturn = "
-      <div class='img-gallery img' itemscope itemtype='http://schema.org/ImageGallery'>";
-    foreach ($images as $picture) {
-      $toReturn .= "<figure itemprop='associatedMedia' itemscope itemtype='http://schema.org/ImageObject'>
-        <a href='".$picture['img-large']."' itemprop='contentUrl' data-size='".$picture['img-size']."'>
-          <img src='".$picture['img-thumb']."' itemprop='thumbnail' alt='".$picture['text']."' />
-        </a>
-        <figcaption itemprop='caption description'>".$picture['text'];
-        if($picture['author'] != "") $toReturn .= "<br/><small>Kuva: ".$picture['author']."</small>";
-        $toReturn .= "</figcaption>
-        ";
-      if($picture['break-row']) $toReturn .= "<br/>";
-      $toReturn .= "</figure>";
-    }
-    $toReturn .= "</div>";
-    return $toReturn;
-  }
-?>
 
-<?php if($logged) {
+<?php
+
+function image_gallery($images = array()) {
+	$toReturn = "
+		<div class='img-gallery img' itemscope itemtype='http://schema.org/ImageGallery'>";
+	foreach ($images as $picture) {
+		$toReturn .= "<figure itemprop='associatedMedia' itemscope itemtype='http://schema.org/ImageObject'>
+			<a href='".$picture['img-large']."' itemprop='contentUrl' data-size='".$picture['img-size']."'>
+				<img src='".$picture['img-thumb']."' itemprop='thumbnail' alt='".$picture['text']."' />
+			</a>
+			<figcaption itemprop='caption description'>".$picture['text'];
+			if($picture['author'] != "") $toReturn .= "<br/><small>Kuva: ".$picture['author']."</small>";
+			$toReturn .= "</figcaption>
+			";
+		if($picture['break-row']) $toReturn .= "<br/>";
+		$toReturn .= "</figure>";
+	}
+	$toReturn .= "</div>";
+	return $toReturn;
+}
+
+if($logged) {
   $picid = $_GET['id'];
   $query = mysqli_query($yht, "SELECT * FROM `images` WHERE `imgur-uid` = '$picid' LIMIT 1");
 	$picture = mysqli_fetch_assoc($query);
@@ -78,7 +78,7 @@ include "{$rel}ohjaus/passphrase.php";
 		<tr>
       <td></td>
 			<td>
-				<form name='copycode' method='GET' onsubmit='window.prompt(\"Kopioi alla oleva sijoituskoodi manuaalisesti\", \"<!--$picid-->\");'>
+				<form name='copycode' method='GET' onsubmit='window.prompt(\"Kopioi alla oleva sijoituskoodi manuaalisesti\", \"<!--gallery $picid&nobr gallery-->\");'>
 					<input type='hidden' name='id' value='$picid'/>
 					<input type='submit' value='Kopio sijoituskoodi'>
 				</form>

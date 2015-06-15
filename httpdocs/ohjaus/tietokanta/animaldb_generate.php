@@ -110,18 +110,18 @@ function returnAnimal($id, $name, $images, $links, $sukuposti, $text, $price, $d
 	<h2 id='animal$id'>$name</h2><br/>
 	");
 	//Images, in rows
-	if(count($images)) foreach($images as $imagerow) {
-		$toReturn .= ("
-		<div class='img img".count($imagerow)."'>
-		");
-		foreach($imagerow as $image) {
-			$toReturn .= ("
-			<img src='$image'> ");
+	$toReturn .= "<!--gallery ";
+	if(count($images)) foreach($images as $key => $imagerow) {
+		
+		foreach($imagerow as $rowkey => $image) {
+			$image = trim($image);
+			//Key isn't zero
+				if($key or $rowkey) $toReturn .= '*';
+			$toReturn .= "$image&b";
 		}
-		$toReturn .= ("
-		</div><br/>
-		");
+		$toReturn .= "r";
 	} else { $noImgs = true; }
+	$toReturn .= " gallery-->";
 	$toReturn .= ("
 	");
 	if(trim($links) != "") {

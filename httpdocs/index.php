@@ -20,9 +20,60 @@ $haku_s = mysqli_query($yht, "SELECT * FROM `sivut` WHERE uid = '".$_GET['s']."'
 
 $pagerow = mysqli_fetch_assoc($haku_s);
 
+$usePhotoSwipe = false;
+
+function image_gallery($images = array()) {
+	if(count($images)) {
+		$toReturn = "
+			<div class='img-gallery img' itemscope itemtype='http://schema.org/ImageGallery'>";
+		foreach ($images as $picture) {
+			$toReturn .= "<figure itemprop='associatedMedia' itemscope itemtype='http://schema.org/ImageObject'>
+				<a href='".$picture['img-large']."' itemprop='contentUrl' data-size='".$picture['img-size']."'>
+					<img src='".$picture['img-thumb']."' itemprop='thumbnail' alt='".$picture['text']."' />
+				</a>
+				<figcaption itemprop='caption description'>".$picture['text'];
+				if($picture['author'] != "") $toReturn .= "<br/><small>Kuva: ".$picture['author']."</small>";
+				$toReturn .= "</figcaption>
+				";
+			if($picture['break-row']) $toReturn .= "<br/>";
+			$toReturn .= "</figure>";
+		}
+		$toReturn .= "</div>";
+		return $toReturn;
+	}
+}
+
+function image_exists($id, $yht) {
+	return mysqli_fetch_array(mysqli_query($yht, "SELECT `imgur-uid` FROM images WHERE `imgur-uid` = '$id' LIMIT 1")) !== false;
+}
+function get_image_by_id($id, $yht) {
+	return mysqli_fetch_assoc(mysqli_query($yht, "SELECT * FROM images WHERE `imgur-uid` = '$id' LIMIT 1"));
+}
+
+function generate_gallery($text, $yht) {
+	$idArray = explode('*', $text);
+	$images = array();
+	foreach ($idArray as $rid) {
+		$attributes = explode('&', $rid);
+		$id = $attributes[0];
+		if (image_exists($id, $yht)) {
+			$images[$id] = get_image_by_id($id, $yht);
+			$images[$id]['break-row'] = $attributes[1] == "br";
+		}
+	}
+	return image_gallery($images);
+}
 
 $kuva = $pagerow["kuva"];
-$teksti = $pagerow["teksti"];
+$rawtext = $pagerow["teksti"];
+$teksti = preg_replace_callback(
+	"/\\<!-+gallery (.+?) gallery-+\\>/",
+	function ($matches) use (&$usePhotoSwipe, $yht) {
+		$usePhotoSwipe = true;
+		return generate_gallery($matches[1], $yht);
+	},
+	$rawtext
+);
 $nimi = $pagerow["nimi"];
 $html = $pagerow["html"];
 $selitys = $pagerow["selitys"];
@@ -65,6 +116,7 @@ function runHandles()
 
 <body onresize="execRnav();" onscroll="execRnav();" onload="runHandles();">
 
+<?php if ($usePhotoSwipe) include "{$rel}skeleton/photoswipe.php" ?>
 <?php include $rel."skeleton/header.php" ?>
 
 <div class="nav">
