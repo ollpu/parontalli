@@ -111,8 +111,8 @@ if($logged) {
   	");
 	} else {
     $large = 'http://i.imgur.com/'.$picid.'h.jpg';
-    $thumb = 'http://i.imgur.com/'.$picid.'m.jpg';
-    $square = 'http://i.imgur.com/'.$picid.'b.jpg';
+    $thumb = 'http://i.imgur.com/'.$picid.'t.jpg';
+    $square = 'http://i.imgur.com/'.$picid.'s.jpg';
     $size = getDimensions($large);
     $query = mysqli_query($yht, "INSERT INTO images (`imgur-uid`, `img-large`, `img-thumb`, `img-square`, `img-size`)
       VALUES ('$picid', '$large', '$thumb', '$square', '$size')");
