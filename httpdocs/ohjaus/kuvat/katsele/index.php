@@ -76,11 +76,15 @@ if($logged) {
 	echo("<br/><br/>
 	<table class='animalDB_edit'>
 		<tr>
-      <td></td>
+      <td>Kopioi sijoituskoodi... </td>
 			<td>
 				<form name='copycode' method='GET' onsubmit='window.prompt(\"Kopioi alla oleva sijoituskoodi manuaalisesti\", \"<!--gallery $picid&nobr gallery-->\");'>
 					<input type='hidden' name='id' value='$picid'/>
-					<input type='submit' value='Kopio sijoituskoodi'>
+					<input type='submit' value='Sivulle'>
+				</form>
+				<form name='copycode' method='GET' onsubmit='window.prompt(\"Kopioi alla oleva sijoituskoodi manuaalisesti\", \"$picid\");'>
+					<input type='hidden' name='id' value='$picid'/>
+					<input type='submit' value='Eläintietokantaan'>
 				</form>
 			</td>
 		</tr>

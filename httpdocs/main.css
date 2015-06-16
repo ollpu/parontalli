@@ -111,10 +111,9 @@ div.img img {
   transition-duration:inherit;
   -webkit-transition-duration:2s;
   width:100%;
-  margin-left:0%;
   box-shadow:0px 0px 5px #555;
   
-  height: 5%;
+  height: 4rem;
   width: auto;
 }
 
@@ -126,7 +125,7 @@ div.img {
 
 div.img figure {
   display: inline;
-  margin: 2px;
+  margin: 2px 0 2px 2px;
   border-style: none;
 }
 
