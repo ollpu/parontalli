@@ -20,6 +20,7 @@ if ($logged == true) {
 	$query = "UPDATE images SET "
     ."text = '". parse($_POST['text'], $yht)
     ."', author = '". parse($_POST['author'], $yht)
+		."', associated_animal = '". parse($_POST['associated_animal'], $yht)
     ."' WHERE `imgur-uid` = '". $_POST['imgur-uid'] ."'"
   ;
 	if(mysqli_query($yht, $query)) {

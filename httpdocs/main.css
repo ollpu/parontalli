@@ -329,7 +329,7 @@ table.animalDB_edit {
   border: 0;
 }
 
-table.animalDB_edit input[type^="text"] {
+table.animalDB_edit input[type^="text"], table.animalDB_edit select {
   width: 100%;
 }
 

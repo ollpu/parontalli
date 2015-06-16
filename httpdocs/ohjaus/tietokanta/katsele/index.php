@@ -102,6 +102,7 @@ if($logged) {
 		returnAnimalById($yht, $animalid, true)
 	));
 	echo("<br/><br/>
+	Katsele eläimestä otettuja kuvia <a href='../../kuvat#imagesof_$animalid'>kuvatietokannassa</a>.
 	<table border='0'>
 		<tr>
 			

@@ -102,6 +102,22 @@ if($logged) {
         <td><input type='text' name='author' value='<?echo(htmlspecialchars($picture['author']))?>'/></td>
         <td class='desc'>Voi sisältää myös esimerkiksi kuvauspäivämäärän.</td>
       </tr>
+			<tr>
+        <td>Kuva on eläimestä: </td>
+        <td>
+					<select name='associated_animal'>
+						<option value="" <?if($picture['associated_animal'] == "") echo("selected");?>>Kuva ei ole eläimestä</option>
+						<?php
+							$animalQuery = mysqli_query($yht, "SELECT `id_name`, `short_name` FROM animals");
+							while($row = mysqli_fetch_array($animalQuery)) {
+								$selected = ($row['id_name'] == $picture['associated_animal'])? 'selected' : '';
+								echo("<option value='{$row['id_name']}' $selected>{$row['short_name']}</option>");
+							}
+						?>
+					</select>
+				</td>
+        <td class='desc'>Käytetään järjestelemään kuvat listanäkymässä.</td>
+      </tr>
       <tr>
         <td></td>
         <td>
