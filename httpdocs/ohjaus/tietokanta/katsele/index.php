@@ -48,12 +48,59 @@ include $rel."ohjaus/passphrase.php";
 
 <?php
 
+function image_gallery($images = array()) {
+	if(count($images)) {
+		$toReturn = "
+			<div class='img-gallery img' itemscope itemtype='http://schema.org/ImageGallery'>";
+		foreach ($images as $picture) {
+			$toReturn .= "<figure itemprop='associatedMedia' itemscope itemtype='http://schema.org/ImageObject'>
+				<a href='".$picture['img-large']."' itemprop='contentUrl' data-size='".$picture['img-size']."'>
+					<img src='".$picture['img-thumb']."' itemprop='thumbnail' alt='".$picture['text']."' />
+				</a>
+				<figcaption itemprop='caption description'>".$picture['text'];
+				if($picture['author'] != "") $toReturn .= "<br/><small>Kuva: ".$picture['author']."</small>";
+				$toReturn .= "</figcaption>
+				";
+			if($picture['break-row']) $toReturn .= "<br/>";
+			$toReturn .= "</figure>";
+		}
+		$toReturn .= "</div>";
+		return $toReturn;
+	}
+}
+
+function image_exists($id, $yht) {
+	return mysqli_fetch_array(mysqli_query($yht, "SELECT `imgur-uid` FROM images WHERE `imgur-uid` = '$id' LIMIT 1")) !== false;
+}
+function get_image_by_id($id, $yht) {
+	return mysqli_fetch_assoc(mysqli_query($yht, "SELECT * FROM images WHERE `imgur-uid` = '$id' LIMIT 1"));
+}
+
+function generate_gallery($text, $yht) {
+	$idArray = explode('*', $text);
+	$images = array();
+	foreach ($idArray as $rid) {
+		$attributes = explode('&', $rid);
+		$id = $attributes[0];
+		if (image_exists($id, $yht)) {
+			$images[$id] = get_image_by_id($id, $yht);
+			$images[$id]['break-row'] = $attributes[1] == "br";
+		}
+	}
+	return image_gallery($images);
+}
 
 if($logged) {
 	include "../animaldb_generate.php";
 	include "{$rel}skeleton/photoswipe.php";
 	$animalid = $_GET['id'];
-	displayAnimalById($yht, $animalid, true);
+	echo(preg_replace_callback(
+		"/\\<!-+gallery (.+?) gallery-+\\>/",
+		function ($matches) use ($yht) {
+			return generate_gallery($matches[1], $yht);
+		},
+		returnAnimalById($yht, $animalid, true)
+	));
 	echo("<br/><br/>
 	<table border='0'>
 		<tr>
