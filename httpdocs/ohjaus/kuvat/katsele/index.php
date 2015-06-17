@@ -23,7 +23,10 @@ include "{$rel}ohjaus/passphrase.php";
 <?php include "{$rel}skeleton/styles.php"; ?>
 
 </head>
-
+<?php if ($logged) {
+	$picid = $_GET['id'];
+	$query = mysqli_query($yht, "SELECT * FROM `images` WHERE `imgur-uid` = '$picid' LIMIT 1");
+	$picture = mysqli_fetch_assoc($query); } ?>
 
 <body>
 
@@ -31,8 +34,8 @@ include "{$rel}ohjaus/passphrase.php";
 
 <div class="nav">
 	<?php
-		createLink("sininen", "../", 	"", 				"Takaisin"		 );
-		createLink("vihrea", 	"./", 	"thispage", "Katsele kuvaa");
+		createLink("sininen", "../#imagesof_".$picture['associated_animal'], "", 				"Takaisin"		 );
+		createLink("vihrea", 	"./", 																"thispage", "Katsele kuvaa");
 	?>
 
 	<hr class="header">
@@ -67,9 +70,6 @@ function image_gallery($images = array()) {
 }
 
 if($logged) {
-  $picid = $_GET['id'];
-  $query = mysqli_query($yht, "SELECT * FROM `images` WHERE `imgur-uid` = '$picid' LIMIT 1");
-	$picture = mysqli_fetch_assoc($query);
   
   echo(image_gallery(array($picture)));
   

@@ -85,7 +85,7 @@ if($logged) {
     $code .= returnImagePane("sininen", "./katsele/?id=".$row['imgur-uid'], $row['img-square']);
   }
   if($code != "") {
-    echo("<h3>Kuvat, jotka eivät ole eläimestä tai eivät ole vielä luokiteltu</h3>");
+    echo("<h3 id='imagesof_'>Kuvat, jotka eivät ole eläimestä tai eivät ole vielä luokiteltu</h3>");
     echo($code);
   }
 	
