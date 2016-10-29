@@ -23,9 +23,9 @@ function parse($input, $con){
 			color = '". parse($_POST['vari'], $yht) ."',
 			predit_teksti = '". parse($_POST['teksti'], $yht) ."',
 			predit_html = '". parse($_POST['html'], $yht) ."',
-			selitys = '". parse($_POST['selitys'], $yht)
-			."' WHERE uid = '". $_POST['uid'] ."'";
-		
+			selitys = '". parse($_POST['selitys'], $yht) ."',
+			hide = ". ($_POST['hide'] == 'true' ? '1' : '0')
+			." WHERE uid = '". $_POST['uid'] ."'";
 		if(mysqli_query($yht, $query)) {
 			generate_and_save_page($yht, $_POST['uid'], $_POST['teksti'], $_POST['html']);
 			header( 'Location: ../paneeli.php?msg=edited' );

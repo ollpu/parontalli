@@ -121,7 +121,7 @@ function runHandles()
 
 <div class="nav">
 	<?
-	$haku = mysqli_query($yht, "SELECT * FROM sivut ORDER BY id");
+	$haku = mysqli_query($yht, "SELECT * FROM sivut WHERE hide = 0 ORDER BY id");
 	while ($row = mysqli_fetch_array($haku)){
 		$thispage = "";
 		if ($row['uid'] == $uid){

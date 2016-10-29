@@ -137,24 +137,10 @@ div.img figure figcaption {
   display: none;
 }
 
-/*div.img img:first-of-type { border-top-left-radius:2em;     }
-div.img img:last-of-type  { border-bottom-right-radius:2em; }*/
-
-/*div.img1 img {width:18%;}
-div.img1:hover img {width:98%;}
-div.img1:active img {width:98%;}
-
-div.img2 img {width:9%;}
-div.img2:hover img {width:49%;}
-div.img2:active img {width:49%;}
-
-div.img3 img {width:6%;}
-div.img3:hover img {width:32.6%;}
-div.img3:active img {width:32.6%;}
-
-div.img4 img {width:2.9%;}
-div.img4:hover img {width:24.50%;}
-div.img4:active img {width:24.50%;}*/
+div.img_legacy img {
+  max-width: 100%;
+  width: 12cm;
+}
 
 
 div.content {

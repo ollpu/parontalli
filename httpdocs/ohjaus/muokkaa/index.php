@@ -66,6 +66,7 @@ Muokkaa sivua
 						<option value="kulta" '. 		$kulta .'>Kullankeltainen</option>
 					</select>
 		<br>
+		<label><input type="checkbox" name="hide" value="true" '. ($eprow['hide'] ? 'checked' : '') .'>Piilota sivu</label> <br/>
 		Teksti:<br><textarea name="teksti" rows="10" cols="30">'. htmlspecialchars($eprow['predit_teksti']) .'</textarea>
 		<br>
 		Selitys: (hakukoneille)<br><textarea name="selitys" rows="4" cols="20">'. $eprow['selitys'] .'</textarea>
