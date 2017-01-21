@@ -12,7 +12,10 @@ $fprow = mysqli_fetch_assoc($haku_fp);
 
 
 //Go to first page in order (front page) if ?s argument is not set
-if(!isset($_GET["s"]))	{$_GET['s'] = $fprow['uid'];}
+if(!isset($_GET["s"])) {$_GET['s'] = $fprow['uid'];}
+else {
+  $_GET['s'] = mysqli_real_escape_string($yht, $_GET['s']);
+}
 
 
 $haku_s = mysqli_query($yht, "SELECT * FROM `sivut` WHERE uid = '".$_GET['s']."' LIMIT 1");
